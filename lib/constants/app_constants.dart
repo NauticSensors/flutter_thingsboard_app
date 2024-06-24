@@ -1,5 +1,5 @@
 abstract class ThingsboardAppConstants {
-  static const thingsBoardApiEndpoint = 'http://localhost:8080';
+  static const thingsBoardApiEndpoint = 'https://bluestar.nauticsensors.com';
   static const thingsboardOAuth2CallbackUrlScheme = 'org.thingsboard.app.auth';
 
   /// Not for production (only for debugging)
