@@ -7,6 +7,9 @@ abstract class ThingsboardImage {
   static const dashboardPlaceholder = 'assets/images/dashboard-placeholder.svg';
   static const deviceProfilePlaceholder =
       'assets/images/device-profile-placeholder.svg';
+  static final nauticSensorsWithTitle =
+      'assets/images/nauticsensors_with_title.svg';
+  static final nauticSensors = 'assets/images/nauticsensors.svg';
 
   static final oauth2Logos = <String, String>{
     'google-logo': 'assets/images/google-logo.svg',
