@@ -71,7 +71,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data
                     android:scheme="https"
-                    android:host="demo.thingsboard.io"
+                    android:host="bluestar.nauticsensors.com"
                     android:pathPrefix="/api/noauth/qr" />
             </intent-filter>
         </activity>
