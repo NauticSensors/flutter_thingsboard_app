@@ -26,10 +26,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -58,5 +55,14 @@ class DefaultFirebaseOptions {
     messagingSenderId: '55882659951',
     projectId: 'bluestar-nauticsensors',
     storageBucket: 'bluestar-nauticsensors.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyAE9mh4jRirhUEA0yFpSy46Lfg51f-THZg',
+    appId: '1:55882659951:ios:e151210da0011a6bba359a',
+    messagingSenderId: '55882659951',
+    projectId: 'bluestar-nauticsensors',
+    storageBucket: 'bluestar-nauticsensors.appspot.com',
+    iosBundleId: 'org.thingsboard.app',
   );
 }
