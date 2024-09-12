@@ -3,7 +3,7 @@ description: Flutter ThingsBoard Mobile Application
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.2.0+6
+version: 1.2.0+7
 
 environment:
   sdk: ">=3.2.0 <4.0.0"
@@ -104,5 +104,6 @@ flutter_icons:
   ios: true
   remove_alpha_ios: true
   image_path: "assets/images/nauticsensors.png"
+  adaptive_icon_background: "#ffffff"
 flutter_intl:
   enabled: true
