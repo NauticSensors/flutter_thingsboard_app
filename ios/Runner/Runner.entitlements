@@ -6,7 +6,7 @@
 	<string>development</string>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>applinks:demo.thingsboard.io</string>
+		<string>applinks:bluestar.nauticsensors.com</string>
 	</array>
 </dict>
 </plist>
