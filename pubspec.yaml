@@ -110,5 +110,6 @@ flutter_icons:
   ios: true
   remove_alpha_ios: true
   image_path: "assets/images/nauticsensors.png"
+  adaptive_icon_background: "#ffffff"
 flutter_intl:
   enabled: true
