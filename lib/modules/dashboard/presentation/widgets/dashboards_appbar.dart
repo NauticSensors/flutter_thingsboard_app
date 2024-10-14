@@ -24,7 +24,7 @@ class DashboardsAppbar extends StatelessWidget {
         elevation: dashboardState ? 0 : 8,
         title: Center(
           child: SizedBox(
-            height: 42,
+            height: 44,
             child: SvgPicture.asset(
               ThingsboardImage.nauticSensorsWithTitle,
               colorFilter: ColorFilter.mode(
