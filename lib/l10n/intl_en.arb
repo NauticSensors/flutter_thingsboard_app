@@ -162,5 +162,6 @@
   "northAmerica": "North America",
   "europe": "Europe",
   "northAmericaRegionShort": "N. Virginia",
-  "europeRegionShort": "Frankfurt"
+  "europeRegionShort": "Frankfurt",
+  "loginWith": "Login with"
 }

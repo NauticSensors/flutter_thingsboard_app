@@ -30,7 +30,8 @@ class _LoginPageState extends TbPageState<LoginPage>
     with WidgetsBindingObserver {
   final ButtonStyle _oauth2IconButtonStyle = OutlinedButton.styleFrom(
     padding: const EdgeInsets.all(16),
-    alignment: Alignment.center,
+    // alignment: Alignment.center,
+    alignment: Alignment.centerLeft,
   );
 
   final _isLoginNotifier = ValueNotifier<bool>(false);
@@ -84,7 +85,8 @@ class _LoginPageState extends TbPageState<LoginPage>
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               SvgPicture.asset(
                                 ThingsboardImage.thingsBoardWithTitle,
@@ -132,10 +134,13 @@ class _LoginPageState extends TbPageState<LoginPage>
                           ),
                           const SizedBox(height: 32),
                           Align(
+                            alignment: Alignment.centerLeft,
                             child: Text(
                               S.of(context).loginNotification,
                               style: TbTextStyles.titleLarge.copyWith(
                                 color: Colors.black.withOpacity(.87),
+                                fontSize: 24,
+
                               ),
                             ),
                           ),
@@ -155,7 +160,7 @@ class _LoginPageState extends TbPageState<LoginPage>
                                   ),
                                   child: Center(
                                     child: Text(
-                                      'Login with',
+                                      S.of(context).loginWith,
                                       style: TbTextStyles.bodyMedium.copyWith(
                                         color: Colors.black.withOpacity(.54),
                                       ),
@@ -405,7 +410,7 @@ class _LoginPageState extends TbPageState<LoginPage>
           padding: const EdgeInsets.symmetric(vertical: 16),
           child: Center(
             child: Text(
-              'Login with',
+              S.of(context).loginWith,
               style: TbTextStyles.bodyMedium.copyWith(
                 color: Colors.black.withOpacity(.54),
               ),
@@ -428,36 +433,37 @@ class _LoginPageState extends TbPageState<LoginPage>
                 )
                 .values
                 .toList(),
-            const SizedBox(width: 8),
-            Expanded(
-              child: OutlinedButton(
-                style: _oauth2IconButtonStyle,
-                onPressed: () async {
-                  FocusScope.of(context).unfocus();
-                  try {
-                    final barcode = await tbContext.navigateTo(
-                      '/qrCodeScan',
-                      transition: TransitionType.nativeModal,
-                    );
+            // // No QR Code
+            // const SizedBox(width: 8),
+            // Expanded(
+            //   child: OutlinedButton(
+            //     style: _oauth2IconButtonStyle,
+            //     onPressed: () async {
+            //       FocusScope.of(context).unfocus();
+            //       try {
+            //         final barcode = await tbContext.navigateTo(
+            //           '/qrCodeScan',
+            //           transition: TransitionType.nativeModal,
+            //         );
 
-                    if (barcode != null && barcode.code != null) {
-                      tbContext.navigateByAppLink(
-                        barcode.code,
-                      );
-                    } else {}
-                  } catch (e) {
-                    log.error(
-                      'Login with qr code error',
-                      e,
-                    );
-                  }
-                },
-                child: SvgPicture.asset(
-                  ThingsboardImage.oauth2Logos['qr-code']!,
-                  height: 24,
-                ),
-              ),
-            ),
+            //         if (barcode != null && barcode.code != null) {
+            //           tbContext.navigateByAppLink(
+            //             barcode.code,
+            //           );
+            //         } else {}
+            //       } catch (e) {
+            //         log.error(
+            //           'Login with qr code error',
+            //           e,
+            //         );
+            //       }
+            //     },
+            //     child: SvgPicture.asset(
+            //       ThingsboardImage.oauth2Logos['qr-code']!,
+            //       height: 24,
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ],
@@ -489,12 +495,23 @@ class _LoginPageState extends TbPageState<LoginPage>
       }
     }
     icon ??= Icon(Icons.login, size: 24, color: Theme.of(context).primaryColor);
+    var rowChildren = [ icon ];
+    if (client.name == 'NauticSensors ID') {
+      icon = SvgPicture.asset(
+      'assets/images/nauticsensors.svg',
+      height: 32,
+      // colorFilter: ColorFilter.mode(
+      //   Theme.of(context).primaryColor,
+      //   BlendMode.srcIn,
+      // ),
+      );
+      rowChildren = [icon, Padding(padding: EdgeInsets.only(right: 14),), Text('NauticSensors ID')];
+    }
     final button = OutlinedButton(
       style: _oauth2IconButtonStyle,
       onPressed: () => _oauth2ButtonPressed(client),
-      child: icon,
+      child: Row(children: rowChildren,),
     );
-
     if (expand) {
       return Expanded(
         child: Padding(
