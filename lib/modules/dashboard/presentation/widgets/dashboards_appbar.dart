@@ -31,7 +31,7 @@ class DashboardsAppbar extends StatelessWidget {
                 Theme.of(context).primaryColor,
                 BlendMode.srcIn,
               ),
-              semanticsLabel: 'NauticSensors Logo',
+              semanticsLabel: 'BlueStar Logo',
             ),
           ),
         ),
