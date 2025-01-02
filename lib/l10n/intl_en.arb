@@ -167,5 +167,10 @@
   "deviceList": "Device list",
   "dashboards": "Dashboards",
   "updateRequired": "Update required",
-  "updateTo": "Update to {version}"
+  "updateTo": "Update to {version}",
+  "noNotificationsFound": "No notifications found",
+  "markAllAsRead": "Mark all as read",
+  "unread": "Unread",
+  "all": "All",
+  "loginWith": "Login with"
 }

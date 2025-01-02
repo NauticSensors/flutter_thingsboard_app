@@ -3,7 +3,7 @@ description: Flutter ThingsBoard Mobile Application
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.5.0
+version: 1.5.0+14
 
 environment:
   sdk: ">=3.2.0 <4.0.0"
@@ -66,7 +66,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: ^0.13.1
+  flutter_launcher_icons: ^0.14.2
   mocktail: ^1.0.3
   bloc_test: ^9.1.7
   flutter_lints: ^2.0.0
@@ -109,6 +109,8 @@ flutter_icons:
   android: "launcher_icon"
   ios: true
   remove_alpha_ios: true
-  image_path: "assets/images/thingsboard.png"
+  image_path: "assets/images/bluestar.png"
+  adaptive_icon_foreground: "assets/images/bluestar.png"
+  adaptive_icon_background: "#ffffff"
 flutter_intl:
   enabled: true
