@@ -53,7 +53,7 @@ class _DashboardGridCardState extends TbContextState<DashboardGridCard> {
                 SizedBox.expand(
                   child: FittedBox(
                     clipBehavior: Clip.hardEdge,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                     child: image,
                   ),
                 ),

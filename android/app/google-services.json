@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "55882659951",
+    "project_id": "bluestar-nauticsensors",
+    "storage_bucket": "bluestar-nauticsensors.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:55882659951:android:77e5dca2fd215fc0ba359a",
+        "android_client_info": {
+          "package_name": "com.nauticsensors.bluestar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArQ4oEFkhvsJ2zgMUvE03U7AaPs9RdnLY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:55882659951:android:72aa506325f50ae0ba359a",
+        "android_client_info": {
+          "package_name": "org.thingsboard.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArQ4oEFkhvsJ2zgMUvE03U7AaPs9RdnLY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

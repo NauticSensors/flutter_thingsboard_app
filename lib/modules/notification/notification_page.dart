@@ -10,6 +10,7 @@ import 'package:thingsboard_app/modules/notification/widgets/filter_segmented_bu
 import 'package:thingsboard_app/modules/notification/widgets/notification_list.dart';
 import 'package:thingsboard_app/thingsboard_client.dart';
 import 'package:thingsboard_app/utils/services/firebase/i_firebase_service.dart';
+import 'package:flutter_gen/gen_l10n/messages.dart';
 import 'package:thingsboard_app/utils/ui/back_button_widget.dart';
 import 'package:thingsboard_app/widgets/tb_app_bar.dart';
 
@@ -48,11 +49,11 @@ class _NotificationPageState extends TbContextState<NotificationPage> {
             }
           },
         ),
-        title: const Text('Notifications'),
+        title: Text(S.of(context).notifications),
         actions: [
           TextButton(
             child: Text(
-              'Mark all as read',
+              S.of(context).markAllAsRead,
               style: TextStyle(color: Theme.of(context).primaryColor),
             ),
             onPressed: () async {
@@ -100,13 +101,13 @@ class _NotificationPageState extends TbContextState<NotificationPage> {
                             );
                           });
                         },
-                        segments: const [
+                        segments: [
                           FilterSegments(
-                            label: 'Unread',
+                            label: S.of(context).unread,
                             value: NotificationsFilter.unread,
                           ),
                           FilterSegments(
-                            label: 'All',
+                            label: S.of(context).all,
                             value: NotificationsFilter.all,
                           ),
                         ],

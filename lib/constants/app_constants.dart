@@ -1,7 +1,7 @@
 abstract class ThingsboardAppConstants {
-  static const thingsBoardApiEndpoint = 'http://localhost:8080';
-  static const thingsboardOAuth2CallbackUrlScheme = 'org.thingsboard.app.auth';
+  static const thingsBoardApiEndpoint = 'https://bluestar.nauticsensors.com';
+  static const thingsboardOAuth2CallbackUrlScheme = 'com.nauticsensors.com.bluestar.account';
 
-  static const thingsboardIOSAppSecret = 'Your app secret here';
-  static const thingsboardAndroidAppSecret = 'Your app secret here';
+  static const thingsboardIOSAppSecret = 'QmtzUUhlbGFXMHlLeUNVbzFPclJIdEtPUFBKUU9kN1FnYk4zRGRsSjhTNHl5b3dOQjg3NXZIZ2d0WHpCRnhubQ==';
+  static const thingsboardAndroidAppSecret = 'QmtzUUhlbGFXMHlLeUNVbzFPclJIdEtPUFBKUU9kN1FnYk4zRGRsSjhTNHl5b3dOQjg3NXZIZ2d0WHpCRnhubQ==';
 }
