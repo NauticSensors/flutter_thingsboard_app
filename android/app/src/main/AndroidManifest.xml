@@ -46,7 +46,7 @@
         android:allowBackup="false"
         android:fullBackupContent="false"
         android:icon="@mipmap/launcher_icon"
-        android:label="ThingsBoard App"
+        android:label="BlueStar"
         android:networkSecurityConfig="@xml/network_security_config"
         android:requestLegacyExternalStorage="true">
         <!-- Set custom default icon. This is used when no icon is set for incoming notification messages.
@@ -90,7 +90,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="demo.thingsboard.io"
+                    android:host="bluestar.nauticsensors.com"
                     android:pathPrefix="/api/noauth/qr"
                     android:scheme="https" />
             </intent-filter>
@@ -105,7 +105,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="org.thingsboard.app.auth" />
+                <data android:scheme="com.nauticsensors.bluestar.account" />
             </intent-filter>
         </activity>
 
