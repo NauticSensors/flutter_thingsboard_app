@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:stream_transform/stream_transform.dart';
 import 'package:thingsboard_app/core/context/tb_context.dart';
 import 'package:thingsboard_app/core/context/tb_context_widget.dart';
+import 'package:thingsboard_app/widgets/ble_scanning_button.dart';
 
 class TbAppBar extends TbContextWidget implements PreferredSizeWidget {
   final Widget? leading;
@@ -60,12 +61,23 @@ class _TbAppBarState extends TbContextState<TbAppBar> {
   }
 
   AppBar buildDefaultBar() {
+    List<Widget> actions = [];
+    
+    if (widget.actions != null) {
+      actions.addAll(widget.actions!);
+    }
+    
+    actions.add(const Padding(
+      padding: EdgeInsets.only(right: 8.0),
+      child: BleScanningButton(),
+    ));
+    
     return AppBar(
       leading: widget.canGoBack || Navigator.of(context).canPop()
           ? widget.leading
           : null,
       title: widget.title,
-      actions: widget.actions,
+      actions: actions,
       elevation: widget.elevation ?? 8,
       shadowColor: widget.shadowColor ?? const Color(0xFFFFFFFF).withAlpha(150),
       centerTitle: false,
@@ -181,6 +193,10 @@ class _TbAppSearchBarState extends TbContextState<TbAppSearchBar> {
               return Container();
             }
           },
+        ),
+        const Padding(
+          padding: EdgeInsets.only(right: 8.0),
+          child: BleScanningButton(),
         ),
       ],
     );
