@@ -32,10 +32,11 @@ class BleScanningService extends ChangeNotifier {
   final Map<String, DateTime> _lastUploadTimes = {};
   final List<Map<String, dynamic>> _pendingUploads = [];
 
-  // static const String _apiEndpoint =
-  //     'https://api.nauticsensors.com/api/v1/webhooks/bluestar-app/ingress';
   static const String _apiEndpoint =
-      'http://192.168.178.2:3000/bluestar-app/ingress';
+      'https://api.nauticsensors.com/api/v1/webhooks/bluestar-app/ingress';
+  // static const String _apiEndpoint =
+  //     'http://192.168.178.2:3000/bluestar-app/ingress';
+  static const String _apiKey = 'f7b572f4-71d1-42b9-a3e3-3a5b798c3d78';
   static const Duration _scanTimeout = Duration(minutes: 2);
   static const Duration _uploadInterval = Duration(seconds: 10);
   static const Duration _throttleDuration = Duration(seconds: 10);
@@ -484,7 +485,7 @@ class BleScanningService extends ChangeNotifier {
         }
         userEmail = _tbContext?.userDetails?.email ?? 'unknown';
       }
-      
+
       final payload = {
         'timestamp': DateTime.now().millisecondsSinceEpoch,
         'devices': deduplicatedDevices,
@@ -505,7 +506,7 @@ class BleScanningService extends ChangeNotifier {
             headers: {
               'Content-Type': 'application/json',
               'User-Agent': 'BluestarApp/1.6.0',
-              'api-key': 'f7b572f4-71d1-42b9-a3e3-3a5b798c3d78'
+              'api-key': _apiKey
             },
             body: jsonEncode(payload),
           )
@@ -572,7 +573,7 @@ class BleScanningService extends ChangeNotifier {
         }
         userEmail = _tbContext?.userDetails?.email ?? 'unknown';
       }
-      
+
       final payload = {
         'timestamp': DateTime.now().millisecondsSinceEpoch,
         'devices': deduplicatedDevices,
@@ -594,6 +595,7 @@ class BleScanningService extends ChangeNotifier {
             headers: {
               'Content-Type': 'application/json',
               'User-Agent': 'BluestarApp/1.6.0',
+              'api-key': _apiKey
             },
             body: jsonEncode(payload),
           )
