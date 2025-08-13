@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:thingsboard_app/core/context/tb_context.dart';
 import 'package:thingsboard_app/utils/services/ble_scanning/ble_scanning_service.dart';
 
 class BleScanningButton extends StatefulWidget {
-  const BleScanningButton({Key? key}) : super(key: key);
+  final TbContext tbContext;
+  
+  const BleScanningButton({
+    Key? key,
+    required this.tbContext,
+  }) : super(key: key);
 
   @override
   State<BleScanningButton> createState() => _BleScanningButtonState();
@@ -18,6 +24,7 @@ class _BleScanningButtonState extends State<BleScanningButton>
   void initState() {
     super.initState();
     _bleScanningService = BleScanningService();
+    _bleScanningService.setContext(widget.tbContext);
     _animationController = AnimationController(
       duration: const Duration(seconds: 1),
       vsync: this,

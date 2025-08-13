@@ -67,9 +67,9 @@ class _TbAppBarState extends TbContextState<TbAppBar> {
       actions.addAll(widget.actions!);
     }
     
-    actions.add(const Padding(
-      padding: EdgeInsets.only(right: 8.0),
-      child: BleScanningButton(),
+    actions.add(Padding(
+      padding: const EdgeInsets.only(right: 8.0),
+      child: BleScanningButton(tbContext: tbContext),
     ));
     
     return AppBar(
@@ -194,9 +194,9 @@ class _TbAppSearchBarState extends TbContextState<TbAppSearchBar> {
             }
           },
         ),
-        const Padding(
-          padding: EdgeInsets.only(right: 8.0),
-          child: BleScanningButton(),
+        Padding(
+          padding: const EdgeInsets.only(right: 8.0),
+          child: BleScanningButton(tbContext: tbContext),
         ),
       ],
     );

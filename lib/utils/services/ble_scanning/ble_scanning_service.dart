@@ -5,7 +5,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:http/http.dart' as http;
 import 'package:permission_handler/permission_handler.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:thingsboard_app/core/context/tb_context.dart';
+import 'package:thingsboard_app/thingsboard_client.dart';
 
 enum BleScanningState {
   idle,
@@ -18,6 +19,8 @@ class BleScanningService extends ChangeNotifier {
   static final BleScanningService _instance = BleScanningService._internal();
   factory BleScanningService() => _instance;
   BleScanningService._internal();
+
+  TbContext? _tbContext;
 
   BleScanningState _state = BleScanningState.idle;
   BleScanningState get state => _state;
@@ -108,6 +111,10 @@ class BleScanningService extends ChangeNotifier {
       print('✅ All BLE permissions granted');
     }
     return true;
+  }
+
+  void setContext(TbContext tbContext) {
+    _tbContext = tbContext;
   }
 
   Future<void> startScanning() async {
@@ -467,8 +474,16 @@ class BleScanningService extends ChangeNotifier {
     }
 
     try {
-      final prefs = await SharedPreferences.getInstance();
-      final userEmail = prefs.getString('user_email') ?? 'unknown';
+      String userEmail = 'unknown';
+      try {
+        final user = await _tbContext?.tbClient.getUserService().getUser();
+        userEmail = user?.email ?? 'unknown';
+      } catch (e) {
+        if (kDebugMode) {
+          print('⚠️ Could not get user email: $e');
+        }
+        userEmail = _tbContext?.userDetails?.email ?? 'unknown';
+      }
       
       final payload = {
         'timestamp': DateTime.now().millisecondsSinceEpoch,
@@ -547,8 +562,16 @@ class BleScanningService extends ChangeNotifier {
     _setState(BleScanningState.uploading);
 
     try {
-      final prefs = await SharedPreferences.getInstance();
-      final userEmail = prefs.getString('user_email') ?? 'unknown';
+      String userEmail = 'unknown';
+      try {
+        final user = await _tbContext?.tbClient.getUserService().getUser();
+        userEmail = user?.email ?? 'unknown';
+      } catch (e) {
+        if (kDebugMode) {
+          print('⚠️ Could not get user email: $e');
+        }
+        userEmail = _tbContext?.userDetails?.email ?? 'unknown';
+      }
       
       final payload = {
         'timestamp': DateTime.now().millisecondsSinceEpoch,
