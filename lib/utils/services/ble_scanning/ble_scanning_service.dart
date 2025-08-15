@@ -152,16 +152,34 @@ class BleScanningService extends ChangeNotifier {
         return;
       }
 
-      final adapterState = await FlutterBluePlus.adapterState.first;
-      if (kDebugMode) {
-        print('📡 Bluetooth adapter state: ${adapterState.name}');
-      }
-      if (adapterState != BluetoothAdapterState.on) {
+      // Wait for adapter to be in 'on' state, with timeout
+      BluetoothAdapterState adapterState;
+      final adapterTimeout = DateTime.now().add(const Duration(seconds: 5));
+      
+      do {
+        adapterState = await FlutterBluePlus.adapterState.first;
         if (kDebugMode) {
-          print('❌ BLE scanning failed: Bluetooth adapter not enabled');
+          print('📡 Bluetooth adapter state: ${adapterState.name}');
         }
-        _setState(BleScanningState.error);
-        return;
+        
+        if (adapterState == BluetoothAdapterState.on) {
+          break;
+        }
+        
+        if (DateTime.now().isAfter(adapterTimeout)) {
+          if (kDebugMode) {
+            print('❌ BLE scanning failed: Bluetooth adapter state timeout');
+          }
+          _setState(BleScanningState.error);
+          return;
+        }
+        
+        // Wait a bit before checking again
+        await Future.delayed(const Duration(milliseconds: 200));
+      } while (adapterState != BluetoothAdapterState.on);
+      
+      if (kDebugMode) {
+        print('✅ Bluetooth adapter is ready');
       }
 
       _setState(BleScanningState.scanning);
