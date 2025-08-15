@@ -190,5 +190,14 @@
   "markAllAsRead": "Mark all as read",
   "unread": "Unread",
   "all": "All",
-  "loginWith": "Login with"
+  "loginWith": "Login with",
+  "scan": "Scan",
+  "uploading": "Uploading",
+  "error": "Error",
+  "found": "found",
+  "scanButtonTooltipIdle": "Tap to start scanning for sensors",
+  "scanButtonTooltipScanning": "Scanning for sensors... Tap to stop",
+  "scanButtonTooltipUploading": "Uploading sensor data",
+  "scanButtonTooltipSuccess": "Scan completed successfully - Tap to scan again",
+  "scanButtonTooltipError": "Scanning failed - Tap to retry"
 }

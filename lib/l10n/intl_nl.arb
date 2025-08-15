@@ -190,5 +190,14 @@
   "markAllAsRead": "Markeer alles als gelezen",
   "unread": "Ongelezen",
   "all": "Alle",
-  "loginWith": "Inlogggen met"
+  "loginWith": "Inlogggen met",
+  "scan": "Scannen",
+  "uploading": "Uploaden",
+  "error": "Fout",
+  "found": "gevonden",
+  "scanButtonTooltipIdle": "Tik om te beginnen met scannen naar sensoren",
+  "scanButtonTooltipScanning": "Scannen naar sensoren... Tik om te stoppen",
+  "scanButtonTooltipUploading": "Sensorgegevens uploaden",
+  "scanButtonTooltipSuccess": "Scan succesvol voltooid - Tik om opnieuw te scannen",
+  "scanButtonTooltipError": "Scannen mislukt - Tik om opnieuw te proberen"
 }

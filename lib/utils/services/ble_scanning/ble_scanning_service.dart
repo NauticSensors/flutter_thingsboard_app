@@ -11,6 +11,7 @@ enum BleScanningState {
   idle,
   scanning,
   uploading,
+  success,
   error,
 }
 
@@ -23,6 +24,9 @@ class BleScanningService extends ChangeNotifier {
 
   BleScanningState _state = BleScanningState.idle;
   BleScanningState get state => _state;
+  
+  int _discoveredDevicesCount = 0;
+  int get discoveredDevicesCount => _discoveredDevicesCount;
 
   Timer? _scanTimer;
   Timer? _uploadTimer;
@@ -30,6 +34,7 @@ class BleScanningService extends ChangeNotifier {
 
   final Map<String, DateTime> _lastUploadTimes = {};
   final List<Map<String, dynamic>> _pendingUploads = [];
+  final Set<String> _discoveredDevices = {};
 
   static const String _apiEndpoint =
       'https://api.nauticsensors.com/api/v1/webhooks/bluestar-app/ingress';
@@ -184,6 +189,8 @@ class BleScanningService extends ChangeNotifier {
 
       _setState(BleScanningState.scanning);
       _pendingUploads.clear();
+      _discoveredDevices.clear();
+      _discoveredDevicesCount = 0;
       if (kDebugMode) {
         print('🧺 Cleared pending uploads, starting fresh scan');
       }
@@ -336,6 +343,13 @@ class BleScanningService extends ChangeNotifier {
         //   print('📱 Device: $macAddress | RSSI: ${result.rssi} dBm | 🚫 Filtered out: No manufacturer data starting with 83bc');
         // }
         continue;
+      }
+      
+      // Track unique discovered devices
+      if (_discoveredDevices.add(macAddress)) {
+        _discoveredDevicesCount++;
+        // Notify listeners for real-time counter updates
+        notifyListeners();
       }
 
       if (kDebugMode) {
@@ -659,7 +673,7 @@ class BleScanningService extends ChangeNotifier {
               '✅ Upload successful! Clearing ${_pendingUploads.length} pending upload(s)');
         }
         _pendingUploads.clear();
-        _setState(BleScanningState.idle);
+        _setState(BleScanningState.success);
       } else {
         if (kDebugMode) {
           print('❌ Upload failed with status ${response.statusCode}');
@@ -687,6 +701,15 @@ class BleScanningService extends ChangeNotifier {
     } else if (kDebugMode) {
       print(
           'ℹ️ clearError() called but current state is not error (current: ${_state.name})');
+    }
+  }
+  
+  void clearSuccess() {
+    if (_state == BleScanningState.success) {
+      if (kDebugMode) {
+        print('🔄 Clearing success state, returning to idle');
+      }
+      _setState(BleScanningState.idle);
     }
   }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/messages.dart';
 import 'package:thingsboard_app/core/context/tb_context.dart';
 import 'package:thingsboard_app/utils/services/ble_scanning/ble_scanning_service.dart';
 
@@ -61,48 +62,131 @@ class _BleScanningButtonState extends State<BleScanningButton>
         break;
       case BleScanningState.uploading:
         break;
+      case BleScanningState.success:
+        _bleScanningService.clearSuccess();
+        break;
       case BleScanningState.error:
         _bleScanningService.clearError();
         break;
     }
   }
 
-  Widget _buildIcon() {
+  Widget _buildContent(BuildContext context) {
     switch (_bleScanningService.state) {
       case BleScanningState.idle:
-        return Icon(
-          Icons.radar,
-          size: 20,
-          color: _getBorderColor(),
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(
+              Icons.radar,
+              size: 18,
+              color: Colors.white,
+            ),
+            const SizedBox(width: 6),
+            Text(
+              S.of(context).scan,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ],
         );
+      
       case BleScanningState.scanning:
-        return RotationTransition(
-          turns: _animationController,
-          child: Icon(
-            Icons.radar,
-            size: 20,
-            color: _getBorderColor(),
-          ),
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            RotationTransition(
+              turns: _animationController,
+              child: const Icon(
+                Icons.radar,
+                size: 18,
+                color: Colors.white,
+              ),
+            ),
+            const SizedBox(width: 6),
+            Text(
+              '${_bleScanningService.discoveredDevicesCount}',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
         );
+      
       case BleScanningState.uploading:
-        return SizedBox(
-          width: 16,
-          height: 16,
-          child: CircularProgressIndicator(
-            strokeWidth: 2,
-            valueColor: AlwaysStoppedAnimation<Color>(_getBorderColor()),
-          ),
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(
+              width: 16,
+              height: 16,
+              child: CircularProgressIndicator(
+                strokeWidth: 2,
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+              ),
+            ),
+            SizedBox(width: 6),
+            Text(
+              S.of(context).uploading,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ],
         );
+      
+      case BleScanningState.success:
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(
+              Icons.check_circle,
+              size: 18,
+              color: Colors.white,
+            ),
+            const SizedBox(width: 6),
+            Text(
+              '${_bleScanningService.discoveredDevicesCount} ${S.of(context).found}',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ],
+        );
+      
       case BleScanningState.error:
-        return Icon(
-          Icons.sensors_off,
-          size: 20,
-          color: _getBorderColor(),
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              Icons.error_outline,
+              size: 18,
+              color: Colors.white,
+            ),
+            SizedBox(width: 6),
+            Text(
+              S.of(context).error,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ],
         );
     }
   }
 
-  Color _getBorderColor() {
+  Color _getBackgroundColor() {
     switch (_bleScanningService.state) {
       case BleScanningState.idle:
         return Theme.of(context).colorScheme.primary;
@@ -110,6 +194,8 @@ class _BleScanningButtonState extends State<BleScanningButton>
         return Colors.orange;
       case BleScanningState.uploading:
         return Colors.blue;
+      case BleScanningState.success:
+        return Colors.green;
       case BleScanningState.error:
         return Colors.red;
     }
@@ -118,48 +204,45 @@ class _BleScanningButtonState extends State<BleScanningButton>
   String _getTooltip() {
     switch (_bleScanningService.state) {
       case BleScanningState.idle:
-        return 'Scan for Sensors';
+        return S.of(context).scanButtonTooltipIdle;
       case BleScanningState.scanning:
-        return 'Stop Sensor Scanning';
+        return S.of(context).scanButtonTooltipScanning;
       case BleScanningState.uploading:
-        return 'Uploading Sensor Data';
+        return S.of(context).scanButtonTooltipUploading;
+      case BleScanningState.success:
+        return S.of(context).scanButtonTooltipSuccess;
       case BleScanningState.error:
-        return 'Sensor Scanning Error - Tap to retry';
+        return S.of(context).scanButtonTooltipError;
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
       child: Tooltip(
         message: _getTooltip(),
         child: Material(
           color: Colors.transparent,
           child: InkWell(
-            onTap: _onButtonPressed,
+            onTap: _bleScanningService.state != BleScanningState.uploading 
+                ? _onButtonPressed 
+                : null,
             borderRadius: BorderRadius.circular(20),
             child: Container(
-              width: 40,
-              height: 40,
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
               decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(
-                  color: _getBorderColor(),
-                  width: 2.0,
-                ),
+                color: _getBackgroundColor(),
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
-                    color: _getBorderColor().withOpacity(0.2),
-                    blurRadius: 3,
-                    offset: const Offset(0, 1),
+                    color: _getBackgroundColor().withOpacity(0.3),
+                    blurRadius: 4,
+                    offset: const Offset(0, 2),
                   ),
                 ],
               ),
-              child: Center(
-                child: _buildIcon(),
-              ),
+              child: _buildContent(context),
             ),
           ),
         ),
