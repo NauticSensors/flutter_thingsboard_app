@@ -6,7 +6,6 @@ import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:http/http.dart' as http;
 import 'package:permission_handler/permission_handler.dart';
 import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
 
 enum BleScanningState {
   idle,
@@ -275,6 +274,27 @@ class BleScanningService extends ChangeNotifier {
     return false;
   }
 
+  String? _extractMacAddressFromServiceData(Map<Guid, List<int>> serviceData) {
+    // Look for service data with UUID 0x2ac3
+    for (final entry in serviceData.entries) {
+      final uuid = entry.key.toString().toLowerCase();
+      final bytes = entry.value;
+
+      // Check if this is our MAC address service data (UUID 0x2ac3)
+      if ((uuid.contains('2ac3') || uuid.contains('c32a')) &&
+          bytes.length >= 6) {
+        // MAC address is the last 6 bytes, in reverse order
+        final macBytes = bytes.sublist(bytes.length - 6).reversed.toList();
+        final macAddress = macBytes
+            .map((b) => b.toRadixString(16).padLeft(2, '0'))
+            .join(':')
+            .toLowerCase();
+        return macAddress;
+      }
+    }
+    return null;
+  }
+
   void _processScanResults(List<ScanResult> results) {
     final now = DateTime.now();
 
@@ -283,7 +303,10 @@ class BleScanningService extends ChangeNotifier {
     }
 
     for (final result in results) {
-      final macAddress = result.device.remoteId.toString();
+      // Try to extract MAC address from service data first, fallback to remoteId
+      final extractedMac = _extractMacAddressFromServiceData(
+          result.advertisementData.serviceData);
+      final macAddress = extractedMac ?? result.device.remoteId.toString();
       final lastUpload = _lastUploadTimes[macAddress];
 
       // Get manufacturer data
@@ -298,8 +321,10 @@ class BleScanningService extends ChangeNotifier {
       }
 
       if (kDebugMode) {
+        final sourceInfo =
+            extractedMac != null ? 'MAC from service data' : 'using remoteId';
         print(
-            '📱 Device: $macAddress | RSSI: ${result.rssi} dBm | ✅ Valid sensor');
+            '📱 Device: $macAddress ($sourceInfo) | RSSI: ${result.rssi} dBm | ✅ Valid sensor');
 
         // Print advertisement details only for valid sensors
         final advData = result.advertisementData;
