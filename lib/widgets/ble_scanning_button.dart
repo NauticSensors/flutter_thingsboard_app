@@ -71,7 +71,7 @@ class _BleScanningButtonState extends State<BleScanningButton>
     switch (_bleScanningService.state) {
       case BleScanningState.idle:
         return Icon(
-          Icons.bluetooth_searching,
+          Icons.radar,
           size: 20,
           color: _getBorderColor(),
         );
@@ -79,7 +79,7 @@ class _BleScanningButtonState extends State<BleScanningButton>
         return RotationTransition(
           turns: _animationController,
           child: Icon(
-            Icons.bluetooth_searching,
+            Icons.radar,
             size: 20,
             color: _getBorderColor(),
           ),
@@ -95,7 +95,7 @@ class _BleScanningButtonState extends State<BleScanningButton>
         );
       case BleScanningState.error:
         return Icon(
-          Icons.bluetooth_disabled,
+          Icons.sensors_off,
           size: 20,
           color: _getBorderColor(),
         );
@@ -118,13 +118,13 @@ class _BleScanningButtonState extends State<BleScanningButton>
   String _getTooltip() {
     switch (_bleScanningService.state) {
       case BleScanningState.idle:
-        return 'Start BLE Scanning';
+        return 'Scan for Sensors';
       case BleScanningState.scanning:
-        return 'Stop BLE Scanning';
+        return 'Stop Sensor Scanning';
       case BleScanningState.uploading:
-        return 'Uploading BLE Data';
+        return 'Uploading Sensor Data';
       case BleScanningState.error:
-        return 'BLE Scanning Error - Tap to retry';
+        return 'Sensor Scanning Error - Tap to retry';
     }
   }
 
