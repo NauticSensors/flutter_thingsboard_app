@@ -47,3 +47,6 @@ app_constants.json
 /android/app/.cxx
 # FVM Version Cache
 .fvm/
+
+# get the config grade from the sysadmin mobile center
+configs.json

@@ -1,0 +1,12 @@
+{
+    "thingsboardApiEndpoint": "https://bluestar.nauticsensors.com",
+    "appLinksUrlHost": "bluestar.nauticsensors.com",
+    "appLinksUrlScheme": "https",
+    "androidApplicationId": "com.nauticsensors.bluestar",
+    "androidApplicationName": "BlueStar",
+    "thingsboardOAuth2CallbackUrlScheme": "com.nauticsensors.bluestar.auth",
+    "thingsboardAndroidAppSecret": "xxx",
+    "iosApplicationId": "com.nauticsensors.bluestar",
+    "iosApplicationName": "BlueStar",
+    "thingsboardIosAppSecret": "xxx"
+}
