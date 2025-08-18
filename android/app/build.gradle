@@ -35,6 +35,11 @@ def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
 def customScheme = getDartDefineValue('thingsboardOAuth2CallbackUrlScheme') ?: 'org.thingsboard.app.auth'
 def customLabel = getDartDefineValue('androidApplicationName') ?: 'Thingsboard app'
 def appLinksUrlHost = getDartDefineValue('appLinksUrlHost') ?: 'demo.thingsboard.io'
@@ -62,6 +67,14 @@ namespace "org.thingsboard.app"
     appLinksUrlScheme: appLinksUrlScheme
 ]
     }
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+            storePassword keystoreProperties['storePassword']
+        }
+    }    
 compileOptions {
         coreLibraryDesugaringEnabled true 
         sourceCompatibility JavaVersion.VERSION_17
@@ -74,7 +87,8 @@ compileOptions {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+            // signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             // Custom proguard rules
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
