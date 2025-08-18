@@ -24,12 +24,13 @@ class BleScanningService extends ChangeNotifier {
 
   BleScanningState _state = BleScanningState.idle;
   BleScanningState get state => _state;
-  
+
   int _discoveredDevicesCount = 0;
   int get discoveredDevicesCount => _discoveredDevicesCount;
 
   Timer? _scanTimer;
   Timer? _uploadTimer;
+  Timer? _autoResetTimer;
   StreamSubscription<List<ScanResult>>? _scanSubscription;
 
   final Map<String, DateTime> _lastUploadTimes = {};
@@ -51,8 +52,32 @@ class BleScanningService extends ChangeNotifier {
         print('🔄 BLE State change: ${_state.name} -> ${newState.name}');
       }
       _state = newState;
+
+      // Start auto-reset timer for final states
+      if (newState == BleScanningState.success ||
+          newState == BleScanningState.error) {
+        _startAutoResetTimer();
+      } else {
+        _cancelAutoResetTimer();
+      }
+
       notifyListeners();
     }
+  }
+
+  void _startAutoResetTimer() {
+    _cancelAutoResetTimer();
+    _autoResetTimer = Timer(const Duration(seconds: 3), () {
+      if (kDebugMode) {
+        print('⏰ Auto-resetting from ${_state.name} to idle');
+      }
+      _setState(BleScanningState.idle);
+    });
+  }
+
+  void _cancelAutoResetTimer() {
+    _autoResetTimer?.cancel();
+    _autoResetTimer = null;
   }
 
   Future<bool> _checkPermissions() async {
@@ -160,17 +185,17 @@ class BleScanningService extends ChangeNotifier {
       // Wait for adapter to be in 'on' state, with timeout
       BluetoothAdapterState adapterState;
       final adapterTimeout = DateTime.now().add(const Duration(seconds: 5));
-      
+
       do {
         adapterState = await FlutterBluePlus.adapterState.first;
         if (kDebugMode) {
           print('📡 Bluetooth adapter state: ${adapterState.name}');
         }
-        
+
         if (adapterState == BluetoothAdapterState.on) {
           break;
         }
-        
+
         if (DateTime.now().isAfter(adapterTimeout)) {
           if (kDebugMode) {
             print('❌ BLE scanning failed: Bluetooth adapter state timeout');
@@ -178,11 +203,11 @@ class BleScanningService extends ChangeNotifier {
           _setState(BleScanningState.error);
           return;
         }
-        
+
         // Wait a bit before checking again
         await Future.delayed(const Duration(milliseconds: 200));
       } while (adapterState != BluetoothAdapterState.on);
-      
+
       if (kDebugMode) {
         print('✅ Bluetooth adapter is ready');
       }
@@ -344,7 +369,7 @@ class BleScanningService extends ChangeNotifier {
         // }
         continue;
       }
-      
+
       // Track unique discovered devices
       if (_discoveredDevices.add(macAddress)) {
         _discoveredDevicesCount++;
@@ -695,20 +720,22 @@ class BleScanningService extends ChangeNotifier {
   void clearError() {
     if (_state == BleScanningState.error) {
       if (kDebugMode) {
-        print('🔄 Clearing error state, returning to idle');
+        print('🔄 Manually clearing error state, returning to idle');
       }
+      _cancelAutoResetTimer();
       _setState(BleScanningState.idle);
     } else if (kDebugMode) {
       print(
           'ℹ️ clearError() called but current state is not error (current: ${_state.name})');
     }
   }
-  
+
   void clearSuccess() {
     if (_state == BleScanningState.success) {
       if (kDebugMode) {
-        print('🔄 Clearing success state, returning to idle');
+        print('🔄 Manually clearing success state, returning to idle');
       }
+      _cancelAutoResetTimer();
       _setState(BleScanningState.idle);
     }
   }
@@ -719,6 +746,7 @@ class BleScanningService extends ChangeNotifier {
       print('🗑️ Disposing BLE scanning service');
     }
     stopScanning();
+    _cancelAutoResetTimer();
     super.dispose();
   }
 }
