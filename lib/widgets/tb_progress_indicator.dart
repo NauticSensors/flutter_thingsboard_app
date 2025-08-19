@@ -5,16 +5,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:thingsboard_app/constants/assets_path.dart';
 
 class TbProgressIndicator extends ProgressIndicator {
-
   const TbProgressIndicator({
     super.key,
     this.size = 36.0,
     super.valueColor,
     super.semanticsLabel,
     super.semanticsValue,
-  }) : super(
-          value: null,
-        );
+  }) : super(value: null);
   final double size;
 
   @override
@@ -57,19 +54,19 @@ class _TbProgressIndicatorState extends State<TbProgressIndicator>
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        SvgPicture.asset(
-          ThingsboardImage.thingsboardCenter,
-          height: widget.size,
-          width: widget.size,
-          colorFilter: ColorFilter.mode(
-            widget._getValueColor(context),
-            BlendMode.srcIn,
-          ),
-        ),
+        // SvgPicture.asset(
+        //   ThingsboardImage.thingsboardCenter,
+        //   height: widget.size,
+        //   width: widget.size,
+        //   colorFilter: ColorFilter.mode(
+        //     widget._getValueColor(context),
+        //     BlendMode.srcIn,
+        //   ),
+        // ),
         AnimatedBuilder(
           animation: _rotation,
           child: SvgPicture.asset(
-            ThingsboardImage.thingsboardOuter,
+            ThingsboardImage.thingsboard,
             height: widget.size,
             width: widget.size,
             colorFilter: ColorFilter.mode(
