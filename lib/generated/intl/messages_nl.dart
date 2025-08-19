@@ -349,6 +349,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "entityType": MessageLookupByLibrary.simpleMessage("Entiteit type"),
     "entityView": MessageLookupByLibrary.simpleMessage("Entiteit weergave"),
+    "error": MessageLookupByLibrary.simpleMessage("Fout"),
     "europe": MessageLookupByLibrary.simpleMessage("Europa"),
     "europeRegionShort": MessageLookupByLibrary.simpleMessage("Frankfurt"),
     "exitDeviceProvisioning": MessageLookupByLibrary.simpleMessage(
@@ -378,6 +379,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Voornaam is vereist.",
     ),
     "firstNameUpper": MessageLookupByLibrary.simpleMessage("Voornaam"),
+    "found": MessageLookupByLibrary.simpleMessage("gevonden"),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
     "hours": MessageLookupByLibrary.simpleMessage("uren"),
     "imNotARobot": MessageLookupByLibrary.simpleMessage("Ik ben geen robot"),
@@ -570,7 +572,23 @@ class MessageLookup extends MessageLookupByLibrary {
     "rpc": MessageLookupByLibrary.simpleMessage("RPC"),
     "ruleChain": MessageLookupByLibrary.simpleMessage("Regel ketting"),
     "ruleNode": MessageLookupByLibrary.simpleMessage("Regel node"),
+    "scan": MessageLookupByLibrary.simpleMessage("Scan"),
     "scanACode": MessageLookupByLibrary.simpleMessage("Scan een code"),
+    "scanButtonTooltipError": MessageLookupByLibrary.simpleMessage(
+      "Scannen mislukt - Tik om opnieuw te proberen",
+    ),
+    "scanButtonTooltipIdle": MessageLookupByLibrary.simpleMessage(
+      "Tik om te beginnen met scannen naar sensoren",
+    ),
+    "scanButtonTooltipScanning": MessageLookupByLibrary.simpleMessage(
+      "Scannen naar sensoren... Tik om te stoppen",
+    ),
+    "scanButtonTooltipSuccess": MessageLookupByLibrary.simpleMessage(
+      "Scan succesvol voltooid - Tik om opnieuw te scannen",
+    ),
+    "scanButtonTooltipUploading": MessageLookupByLibrary.simpleMessage(
+      "Sensorgegevens uploaden",
+    ),
     "scanQrCode": MessageLookupByLibrary.simpleMessage("QR code scannen"),
     "search": MessageLookupByLibrary.simpleMessage("Zoeken"),
     "searchResults": MessageLookupByLibrary.simpleMessage("Zoekresultaten"),
@@ -645,6 +663,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "update": MessageLookupByLibrary.simpleMessage("Bijwerken"),
     "updateRequired": MessageLookupByLibrary.simpleMessage("Update vereist"),
     "updateTo": m18,
+    "uploading": MessageLookupByLibrary.simpleMessage("Uploaden"),
     "url": MessageLookupByLibrary.simpleMessage("Url"),
     "user": MessageLookupByLibrary.simpleMessage("Gebruiker"),
     "username": MessageLookupByLibrary.simpleMessage("gebruikersnaam"),

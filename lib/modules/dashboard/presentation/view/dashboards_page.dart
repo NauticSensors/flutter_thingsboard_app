@@ -6,6 +6,7 @@ import 'package:thingsboard_app/modules/dashboard/presentation/controller/dashbo
 import 'package:thingsboard_app/modules/dashboard/presentation/widgets/dashboards_appbar.dart';
 import 'package:thingsboard_app/modules/dashboard/presentation/widgets/dashboards_grid.dart';
 import 'package:thingsboard_app/widgets/two_page_view.dart';
+import 'package:thingsboard_app/widgets/ble_scanning_button.dart';
 
 class DashboardsPage extends TbContextWidget {
   DashboardsPage(
@@ -29,9 +30,18 @@ class _DashboardsPageState extends TbContextState<DashboardsPage> {
       controller: pageViewCtrl,
       first: DashboardsAppbar(
         tbContext: tbContext,
-        body: DashboardsGridWidget(
-          tbContext: tbContext,
-          dashboardPageCtrl: dashboardPageCtrl,
+        body: Stack(
+          children: [
+            DashboardsGridWidget(
+              tbContext: tbContext,
+              dashboardPageCtrl: dashboardPageCtrl,
+            ),
+            Positioned(
+              bottom: 16,
+              right: 16,
+              child: BleScanningButton(tbContext: tbContext),
+            ),
+          ],
         ),
       ),
       second: MainDashboardPage(

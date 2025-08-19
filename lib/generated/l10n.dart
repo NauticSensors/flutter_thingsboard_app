@@ -2660,6 +2660,76 @@ class S {
       args: [],
     );
   }
+
+  /// `Scan`
+  String get scan {
+    return Intl.message('Scan', name: 'scan', desc: '', args: []);
+  }
+
+  /// `Uploading`
+  String get uploading {
+    return Intl.message('Uploading', name: 'uploading', desc: '', args: []);
+  }
+
+  /// `Error`
+  String get error {
+    return Intl.message('Error', name: 'error', desc: '', args: []);
+  }
+
+  /// `found`
+  String get found {
+    return Intl.message('found', name: 'found', desc: '', args: []);
+  }
+
+  /// `Tap to start scanning for sensors`
+  String get scanButtonTooltipIdle {
+    return Intl.message(
+      'Tap to start scanning for sensors',
+      name: 'scanButtonTooltipIdle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scanning for sensors... Tap to stop`
+  String get scanButtonTooltipScanning {
+    return Intl.message(
+      'Scanning for sensors... Tap to stop',
+      name: 'scanButtonTooltipScanning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Uploading sensor data`
+  String get scanButtonTooltipUploading {
+    return Intl.message(
+      'Uploading sensor data',
+      name: 'scanButtonTooltipUploading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scan completed successfully - Tap to scan again`
+  String get scanButtonTooltipSuccess {
+    return Intl.message(
+      'Scan completed successfully - Tap to scan again',
+      name: 'scanButtonTooltipSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scanning failed - Tap to retry`
+  String get scanButtonTooltipError {
+    return Intl.message(
+      'Scanning failed - Tap to retry',
+      name: 'scanButtonTooltipError',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

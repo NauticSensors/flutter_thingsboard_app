@@ -7,6 +7,7 @@ import 'package:thingsboard_app/modules/dashboard/presentation/widgets/dashboard
 import 'package:thingsboard_app/utils/services/endpoint/i_endpoint_service.dart';
 import 'package:thingsboard_app/utils/ui/tb_text_styles.dart';
 import 'package:thingsboard_app/widgets/tb_app_bar.dart';
+import 'package:thingsboard_app/widgets/ble_scanning_button.dart';
 
 class MainDashboardPage extends TbContextWidget {
   MainDashboardPage(
@@ -85,28 +86,37 @@ class _MainDashboardPageState extends TbContextState<MainDashboardPage>
             builder: (context, value, _) {
               return SafeArea(
                 bottom: false,
-                child: DashboardWidget(
-                  tbContext,
-                  titleCallback: (title) {
-                    dashboardTitleValue.value = title;
-                  },
-                  pageController: widget.controller,
-                  controllerCallback: (controller, loadingCtrl) {
-                    _dashboardController = controller;
-                    _dashboardLoadingCtrl = loadingCtrl;
-                    widget.controller.setDashboardController(controller);
-        
-                    controller.hasRightLayout.addListener(() {
-                      hasRightLayout.value = controller.hasRightLayout.value;
-                    });
-                    controller.rightLayoutOpened.addListener(() {
-                      if (controller.rightLayoutOpened.value) {
-                        rightLayoutMenuController.forward();
-                      } else {
-                        rightLayoutMenuController.reverse();
-                      }
-                    });
-                  },
+                child: Stack(
+                  children: [
+                    DashboardWidget(
+                      tbContext,
+                      titleCallback: (title) {
+                        dashboardTitleValue.value = title;
+                      },
+                      pageController: widget.controller,
+                      controllerCallback: (controller, loadingCtrl) {
+                        _dashboardController = controller;
+                        _dashboardLoadingCtrl = loadingCtrl;
+                        widget.controller.setDashboardController(controller);
+            
+                        controller.hasRightLayout.addListener(() {
+                          hasRightLayout.value = controller.hasRightLayout.value;
+                        });
+                        controller.rightLayoutOpened.addListener(() {
+                          if (controller.rightLayoutOpened.value) {
+                            rightLayoutMenuController.forward();
+                          } else {
+                            rightLayoutMenuController.reverse();
+                          }
+                        });
+                      },
+                    ),
+                    Positioned(
+                      bottom: 16,
+                      right: 16,
+                      child: BleScanningButton(tbContext: tbContext),
+                    ),
+                  ],
                 ),
               );
             },

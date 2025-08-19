@@ -37,11 +37,11 @@
 		<key>LSRequiresIPhoneOS</key>
 		<true/>
 		<key>NSBluetoothAlwaysUsageDescription</key>
-		<string>Our app uses bluetooth to find, connect and transfer data between different devices</string>
+		<string>Our app uses bluetooth to find, connect and transfer data between different devices, and to scan for nearby BLE sensors to report their data to the cloud</string>
 		<key>NSMicrophoneUsageDescription</key>
 		<string>Record video with sound.</string>
 		<key>NSBluetoothPeripheralUsageDescription</key>
-		<string>Our app uses bluetooth to provision devices</string>
+		<string>Our app uses bluetooth to provision devices and scan for BLE sensors</string>
 		<key>NSCameraUsageDescription</key>
 		<string>Scan QrCode or take photos using your camera.</string>
 		<key>NSLocalNetworkUsageDescription</key>

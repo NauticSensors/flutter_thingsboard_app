@@ -44,7 +44,7 @@
 			<true/>
 		</dict>
 		<key>NSBluetoothAlwaysUsageDescription</key>
-		<string>Our app uses bluetooth to provision devices</string>
+		<string>Our app uses bluetooth to provision devices and scan for BLE sensors</string>
 		<key>NSMicrophoneUsageDescription</key>
 		<string>Record video with sound.</string>
 		<key>NSBonjourServices</key>

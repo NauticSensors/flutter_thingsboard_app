@@ -354,5 +354,14 @@
   "actionTypeUpdatedComment": "Updated Comment",
   "actionTypeDeletedComment": "Deleted Comment",
   "actionTypeSmsSent": "SMS Sent",
-  "isRequiredText": "is required."
+  "isRequiredText": "is required.",
+  "scan": "Scan",
+  "uploading": "Uploading",
+  "error": "Error",
+  "found": "found",
+  "scanButtonTooltipIdle": "Tap to start scanning for sensors",
+  "scanButtonTooltipScanning": "Scanning for sensors... Tap to stop",
+  "scanButtonTooltipUploading": "Uploading sensor data",
+  "scanButtonTooltipSuccess": "Scan completed successfully - Tap to scan again",
+  "scanButtonTooltipError": "Scanning failed - Tap to retry"
 }
