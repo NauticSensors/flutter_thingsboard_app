@@ -62,6 +62,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m14(name) => "Route not defined: ${name}";
 
+  static String m21(count) => "${count} entries";
+
   static String m15(count) =>
       "${Intl.plural(count, one: 'Search user', other: 'Search users')}";
 
@@ -261,6 +263,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Device has been\nsuccessfully claimed",
     ),
     "clear": MessageLookupByLibrary.simpleMessage("Clear"),
+    "clearLogs": MessageLookupByLibrary.simpleMessage("Clear logs"),
     "cleared": MessageLookupByLibrary.simpleMessage("Cleared"),
     "close": MessageLookupByLibrary.simpleMessage("Close"),
     "codeVerificationFailed": MessageLookupByLibrary.simpleMessage(
@@ -339,6 +342,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "entityType": MessageLookupByLibrary.simpleMessage("Entity Type"),
     "entityView": MessageLookupByLibrary.simpleMessage("Entity view"),
     "error": MessageLookupByLibrary.simpleMessage("Error"),
+    "errorOccurredDuringScanning": MessageLookupByLibrary.simpleMessage(
+      "Error occurred during scanning",
+    ),
     "europe": MessageLookupByLibrary.simpleMessage("Europe"),
     "europeRegionShort": MessageLookupByLibrary.simpleMessage("Frankfurt"),
     "exitDeviceProvisioning": MessageLookupByLibrary.simpleMessage(
@@ -439,6 +445,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "No notifications found",
     ),
     "noResultsFound": MessageLookupByLibrary.simpleMessage("No results found"),
+    "noScanLogsYet": MessageLookupByLibrary.simpleMessage("No scan logs yet"),
     "northAmerica": MessageLookupByLibrary.simpleMessage("North America"),
     "northAmericaRegionShort": MessageLookupByLibrary.simpleMessage(
       "N. Virginia",
@@ -566,7 +573,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "scanButtonTooltipUploading": MessageLookupByLibrary.simpleMessage(
       "Uploading sensor data",
     ),
+    "scanLogs": MessageLookupByLibrary.simpleMessage("Scan Logs"),
+    "scanLogsEntries": m21,
     "scanQrCode": MessageLookupByLibrary.simpleMessage("Scan QR code"),
+    "scanningForSensors": MessageLookupByLibrary.simpleMessage(
+      "Scanning for sensors...",
+    ),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
     "searchResults": MessageLookupByLibrary.simpleMessage("Search results"),
     "searchUsers": m15,
@@ -582,6 +594,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "sendingWifiCredentials": MessageLookupByLibrary.simpleMessage(
       "Sending Wi-Fi credentials",
     ),
+    "sensorScanner": MessageLookupByLibrary.simpleMessage("Sensor Scanner"),
+    "sensorScannerDescription": MessageLookupByLibrary.simpleMessage(
+      "Directly collect sensor data from nearby sensors and upload to the platform. Ideal for situations where a bridge device is absent or has no network connectivity.",
+    ),
+    "sensorScannerReady": MessageLookupByLibrary.simpleMessage(
+      "Sensor Scanner Ready",
+    ),
     "severity": MessageLookupByLibrary.simpleMessage("Severity"),
     "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
     "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
@@ -592,6 +611,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "somethingWentWrongRollback": MessageLookupByLibrary.simpleMessage(
       "Something went wrong ... Rollback",
+    ),
+    "startScanningToSeeLogs": MessageLookupByLibrary.simpleMessage(
+      "Start scanning to see logs here",
     ),
     "startTime": MessageLookupByLibrary.simpleMessage("Start time"),
     "stateOrProvince": MessageLookupByLibrary.simpleMessage("State / Province"),
@@ -636,7 +658,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "update": MessageLookupByLibrary.simpleMessage("Update"),
     "updateRequired": MessageLookupByLibrary.simpleMessage("Update required"),
     "updateTo": m18,
+    "uploadCompletedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Upload completed successfully",
+    ),
     "uploading": MessageLookupByLibrary.simpleMessage("Uploading"),
+    "uploadingScanResults": MessageLookupByLibrary.simpleMessage(
+      "Uploading scan results...",
+    ),
     "url": MessageLookupByLibrary.simpleMessage("Url"),
     "user": MessageLookupByLibrary.simpleMessage("User"),
     "username": MessageLookupByLibrary.simpleMessage("username"),

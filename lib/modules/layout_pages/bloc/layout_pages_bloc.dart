@@ -22,6 +22,7 @@ import 'package:thingsboard_app/modules/notification/notification_page.dart';
 import 'package:thingsboard_app/modules/notification/service/notifications_local_service.dart';
 import 'package:thingsboard_app/modules/notification/widgets/notification_icon.dart';
 import 'package:thingsboard_app/modules/url/url_page.dart';
+import 'package:thingsboard_app/modules/ble/ble_scanning_page.dart';
 import 'package:thingsboard_app/thingsboard_client.dart';
 import 'package:thingsboard_app/utils/services/layouts/i_layout_service.dart';
 import 'package:thingsboard_app/utils/ui/tb_text_styles.dart';
@@ -123,6 +124,11 @@ class LayoutPagesBloc extends Bloc<LayoutPagesEvent, LayoutPagesState> {
           return UrlPage(url: pageLayout.url!, tbContext: tbContext);
         } else if (pageLayout.path != null) {
           late String path;
+
+          // Check for sensor scanner page
+          if (pageLayout.path == '/ble-scanner') {
+            return BleScanningPage(tbContext);
+          }
 
           // Check if a user wants to open web view
           if (pageLayout.path!.startsWith('/url/')) {

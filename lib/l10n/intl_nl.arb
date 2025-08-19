@@ -363,5 +363,24 @@
   "scanButtonTooltipScanning": "Scannen naar sensoren... Tik om te stoppen",
   "scanButtonTooltipUploading": "Sensorgegevens uploaden",
   "scanButtonTooltipSuccess": "Scan succesvol voltooid - Tik om opnieuw te scannen",
-  "scanButtonTooltipError": "Scannen mislukt - Tik om opnieuw te proberen"
+  "scanButtonTooltipError": "Scannen mislukt - Tik om opnieuw te proberen",
+  "sensorScanner": "Sensorscanner",
+  "sensorScannerDescription": "Verzamel direct sensorgegevens van nabijgelegen sensoren en upload naar het platform. Ideaal voor situaties waar een bridge-apparaat ontbreekt of geen netwerkverbinding heeft.",
+  "sensorScannerReady": "Sensorscanner gereed",
+  "scanningForSensors": "Scannen naar sensoren...",
+  "uploadingScanResults": "Scanresultaten uploaden...",
+  "uploadCompletedSuccessfully": "Upload succesvol voltooid",
+  "errorOccurredDuringScanning": "Fout opgetreden tijdens scannen",
+  "scanLogs": "Scanlogs",
+  "noScanLogsYet": "Nog geen scanlogs",
+  "startScanningToSeeLogs": "Begin met scannen om hier logs te zien",
+  "clearLogs": "Logs wissen",
+  "scanLogsEntries": "{count} regels",
+  "@scanLogsEntries": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }

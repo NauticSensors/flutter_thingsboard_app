@@ -22,6 +22,19 @@ class BleScanningService extends ChangeNotifier {
   int _discoveredDevicesCount = 0;
   int get discoveredDevicesCount => _discoveredDevicesCount;
 
+  // Callback for logging events
+  Function(String)? _onLogEvent;
+  void setLogCallback(Function(String)? callback) {
+    _onLogEvent = callback;
+  }
+
+  void _logEvent(String message) {
+    _onLogEvent?.call(message);
+    if (kDebugMode) {
+      print(message);
+    }
+  }
+
   Timer? _scanTimer;
   Timer? _uploadTimer;
   Timer? _autoResetTimer;
@@ -230,14 +243,10 @@ class BleScanningService extends ChangeNotifier {
       // Start periodic upload timer
       _uploadTimer = Timer.periodic(_uploadInterval, (timer) {
         if (_pendingUploads.isNotEmpty) {
-          if (kDebugMode) {
-            print(
-              '⏰ Periodic upload triggered (${_pendingUploads.length} devices queued)',
-            );
-          }
+          _logEvent('⏰ Periodic upload triggered (${_pendingUploads.length} devices queued)');
           _uploadPendingDataDuringScanning();
-        } else if (kDebugMode) {
-          print('⏰ Periodic upload check - no data to upload');
+        } else {
+          _logEvent('⏰ Periodic upload check - no data to upload');
         }
       });
 
@@ -555,10 +564,8 @@ class BleScanningService extends ChangeNotifier {
     // Deduplicate devices before upload
     final deduplicatedDevices = _deduplicateDevices(_pendingUploads);
 
+    _logEvent('📤 Starting periodic upload of ${deduplicatedDevices.length} devices');
     if (kDebugMode) {
-      print(
-        '📤 Uploading ${deduplicatedDevices.length} device(s) during scanning (${_pendingUploads.length} before deduplication)',
-      );
       for (int i = 0; i < deduplicatedDevices.length; i++) {
         final device = deduplicatedDevices[i];
         print(
@@ -612,23 +619,17 @@ class BleScanningService extends ChangeNotifier {
       }
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        if (kDebugMode) {
-          print(
-            '✅ Periodic upload successful! Clearing ${_pendingUploads.length} pending upload(s)',
-          );
-        }
+        _logEvent('✅ Periodic upload successful! Uploaded ${deduplicatedDevices.length} devices');
         _pendingUploads.clear();
       } else {
+        _logEvent('❌ Periodic upload failed with status ${response.statusCode}');
         if (kDebugMode) {
-          print('❌ Periodic upload failed with status ${response.statusCode}');
           print('❌ Response: ${response.body}');
         }
         // Don't change state during scanning, just log the error
       }
     } catch (e) {
-      if (kDebugMode) {
-        print('❌ Periodic upload exception: $e');
-      }
+      _logEvent('❌ Periodic upload exception: $e');
       // Don't change state during scanning, just log the error
     }
   }

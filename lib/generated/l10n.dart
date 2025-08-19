@@ -2730,6 +2730,116 @@ class S {
       args: [],
     );
   }
+
+  /// `Sensor Scanner`
+  String get sensorScanner {
+    return Intl.message(
+      'Sensor Scanner',
+      name: 'sensorScanner',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Directly collect sensor data from nearby sensors and upload to the platform. Ideal for situations where a bridge device is absent or has no network connectivity.`
+  String get sensorScannerDescription {
+    return Intl.message(
+      'Directly collect sensor data from nearby sensors and upload to the platform. Ideal for situations where a bridge device is absent or has no network connectivity.',
+      name: 'sensorScannerDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sensor Scanner Ready`
+  String get sensorScannerReady {
+    return Intl.message(
+      'Sensor Scanner Ready',
+      name: 'sensorScannerReady',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scanning for sensors...`
+  String get scanningForSensors {
+    return Intl.message(
+      'Scanning for sensors...',
+      name: 'scanningForSensors',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Uploading scan results...`
+  String get uploadingScanResults {
+    return Intl.message(
+      'Uploading scan results...',
+      name: 'uploadingScanResults',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload completed successfully`
+  String get uploadCompletedSuccessfully {
+    return Intl.message(
+      'Upload completed successfully',
+      name: 'uploadCompletedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error occurred during scanning`
+  String get errorOccurredDuringScanning {
+    return Intl.message(
+      'Error occurred during scanning',
+      name: 'errorOccurredDuringScanning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scan Logs`
+  String get scanLogs {
+    return Intl.message('Scan Logs', name: 'scanLogs', desc: '', args: []);
+  }
+
+  /// `No scan logs yet`
+  String get noScanLogsYet {
+    return Intl.message(
+      'No scan logs yet',
+      name: 'noScanLogsYet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start scanning to see logs here`
+  String get startScanningToSeeLogs {
+    return Intl.message(
+      'Start scanning to see logs here',
+      name: 'startScanningToSeeLogs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clear logs`
+  String get clearLogs {
+    return Intl.message('Clear logs', name: 'clearLogs', desc: '', args: []);
+  }
+
+  /// `{count} entries`
+  String scanLogsEntries(int count) {
+    return Intl.message(
+      '$count entries',
+      name: 'scanLogsEntries',
+      desc: '',
+      args: [count],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

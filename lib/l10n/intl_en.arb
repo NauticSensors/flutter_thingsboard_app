@@ -363,5 +363,24 @@
   "scanButtonTooltipScanning": "Scanning for sensors... Tap to stop",
   "scanButtonTooltipUploading": "Uploading sensor data",
   "scanButtonTooltipSuccess": "Scan completed successfully - Tap to scan again",
-  "scanButtonTooltipError": "Scanning failed - Tap to retry"
+  "scanButtonTooltipError": "Scanning failed - Tap to retry",
+  "sensorScanner": "Sensor Scanner",
+  "sensorScannerDescription": "Directly collect sensor data from nearby sensors and upload to the platform. Ideal for situations where a bridge device is absent or has no network connectivity.",
+  "sensorScannerReady": "Sensor Scanner Ready",
+  "scanningForSensors": "Scanning for sensors...",
+  "uploadingScanResults": "Uploading scan results...",
+  "uploadCompletedSuccessfully": "Upload completed successfully",
+  "errorOccurredDuringScanning": "Error occurred during scanning",
+  "scanLogs": "Scan Logs",
+  "noScanLogsYet": "No scan logs yet",
+  "startScanningToSeeLogs": "Start scanning to see logs here",
+  "clearLogs": "Clear logs",
+  "scanLogsEntries": "{count} entries",
+  "@scanLogsEntries": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }

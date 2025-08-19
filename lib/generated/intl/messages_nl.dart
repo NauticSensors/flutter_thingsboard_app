@@ -63,6 +63,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m14(name) => "Route niet gedefinieerd: ${name}";
 
+  static String m21(count) => "${count} regels";
+
   static String m15(count) =>
       "${Intl.plural(count, one: 'Zoek gebruiker', other: 'Zoek gebruikers')}";
 
@@ -264,6 +266,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Apparaat is\nsuccessvol geclaimd",
     ),
     "clear": MessageLookupByLibrary.simpleMessage("Wissen"),
+    "clearLogs": MessageLookupByLibrary.simpleMessage("Logs wissen"),
     "cleared": MessageLookupByLibrary.simpleMessage("Gewist"),
     "close": MessageLookupByLibrary.simpleMessage("Sluiten"),
     "codeVerificationFailed": MessageLookupByLibrary.simpleMessage(
@@ -350,6 +353,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "entityType": MessageLookupByLibrary.simpleMessage("Entiteit type"),
     "entityView": MessageLookupByLibrary.simpleMessage("Entiteit weergave"),
     "error": MessageLookupByLibrary.simpleMessage("Fout"),
+    "errorOccurredDuringScanning": MessageLookupByLibrary.simpleMessage(
+      "Fout opgetreden tijdens scannen",
+    ),
     "europe": MessageLookupByLibrary.simpleMessage("Europa"),
     "europeRegionShort": MessageLookupByLibrary.simpleMessage("Frankfurt"),
     "exitDeviceProvisioning": MessageLookupByLibrary.simpleMessage(
@@ -456,6 +462,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "noResultsFound": MessageLookupByLibrary.simpleMessage(
       "Geen resultaten gevonden",
     ),
+    "noScanLogsYet": MessageLookupByLibrary.simpleMessage("Nog geen scanlogs"),
     "northAmerica": MessageLookupByLibrary.simpleMessage("Noord-Amerika"),
     "northAmericaRegionShort": MessageLookupByLibrary.simpleMessage(
       "N. Virginia",
@@ -589,7 +596,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "scanButtonTooltipUploading": MessageLookupByLibrary.simpleMessage(
       "Sensorgegevens uploaden",
     ),
+    "scanLogs": MessageLookupByLibrary.simpleMessage("Scanlogs"),
+    "scanLogsEntries": m21,
     "scanQrCode": MessageLookupByLibrary.simpleMessage("QR code scannen"),
+    "scanningForSensors": MessageLookupByLibrary.simpleMessage(
+      "Scannen naar sensoren...",
+    ),
     "search": MessageLookupByLibrary.simpleMessage("Zoeken"),
     "searchResults": MessageLookupByLibrary.simpleMessage("Zoekresultaten"),
     "searchUsers": m15,
@@ -605,6 +617,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "sendingWifiCredentials": MessageLookupByLibrary.simpleMessage(
       "Wi-Fi referenties verzenden",
     ),
+    "sensorScanner": MessageLookupByLibrary.simpleMessage("Sensorscanner"),
+    "sensorScannerDescription": MessageLookupByLibrary.simpleMessage(
+      "Verzamel direct sensorgegevens van nabijgelegen sensoren en upload naar het platform. Ideaal voor situaties waar een bridge-apparaat ontbreekt of geen netwerkverbinding heeft.",
+    ),
+    "sensorScannerReady": MessageLookupByLibrary.simpleMessage(
+      "Sensorscanner gereed",
+    ),
     "severity": MessageLookupByLibrary.simpleMessage("Ernst"),
     "signIn": MessageLookupByLibrary.simpleMessage("Inloggen"),
     "signUp": MessageLookupByLibrary.simpleMessage("Aanmelden"),
@@ -615,6 +634,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "somethingWentWrongRollback": MessageLookupByLibrary.simpleMessage(
       "Er is iets misgegaan... Terugdraaien",
+    ),
+    "startScanningToSeeLogs": MessageLookupByLibrary.simpleMessage(
+      "Begin met scannen om hier logs te zien",
     ),
     "startTime": MessageLookupByLibrary.simpleMessage("Start tijd"),
     "stateOrProvince": MessageLookupByLibrary.simpleMessage(
@@ -663,7 +685,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "update": MessageLookupByLibrary.simpleMessage("Bijwerken"),
     "updateRequired": MessageLookupByLibrary.simpleMessage("Update vereist"),
     "updateTo": m18,
+    "uploadCompletedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Upload succesvol voltooid",
+    ),
     "uploading": MessageLookupByLibrary.simpleMessage("Uploaden"),
+    "uploadingScanResults": MessageLookupByLibrary.simpleMessage(
+      "Scanresultaten uploaden...",
+    ),
     "url": MessageLookupByLibrary.simpleMessage("Url"),
     "user": MessageLookupByLibrary.simpleMessage("Gebruiker"),
     "username": MessageLookupByLibrary.simpleMessage("gebruikersnaam"),
