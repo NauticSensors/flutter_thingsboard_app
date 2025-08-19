@@ -119,11 +119,11 @@ class _LoginPageState extends TbPageState<LoginPage>
                                   children: [
                                     Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.center,
                                       children: [
                                         SvgPicture.asset(
                                           ThingsboardImage.thingsBoardWithTitle,
-                                          height: 25,
+                                          height: 44,
                                           colorFilter: ColorFilter.mode(
                                             Theme.of(context).primaryColor,
                                             BlendMode.srcIn,
@@ -152,7 +152,9 @@ class _LoginPageState extends TbPageState<LoginPage>
                                               children: [
                                                 Text(
                                                   selectedRegion
-                                                          ?.regionToString(context) ??
+                                                          ?.regionToString(
+                                                            context,
+                                                          ) ??
                                                       '',
                                                   style: TbTextStyles.bodyLarge,
                                                 ),
@@ -187,258 +189,257 @@ class _LoginPageState extends TbPageState<LoginPage>
                                     const SizedBox(height: 48),
                                     if (state.oAuthClients.isNotEmpty)
                                       _buildOAuth2Buttons(state.oAuthClients),
-                                    Visibility(
-                                      visible: state.oAuthClients.isEmpty,
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.stretch,
-                                        children: [
-                                          Container(
-                                            padding: const EdgeInsets.symmetric(
-                                              vertical: 16,
-                                            ),
-                                            child: Center(
-                                              child: Text(
-                                              
-                                                S.of(context).loginWith,
-                                                style: TbTextStyles.bodyMedium
-                                                    .copyWith(
-                                                      color: Colors.black
-                                                          .withValues(
-                                                            alpha: .54,
-                                                          ),
-                                                    ),
-                                              ),
-                                            ),
-                                          ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              OutlinedButton(
-                                                style: _oauth2IconButtonStyle,
-                                                onPressed:
-                                                    () async =>
-                                                        await _onLoginWithBarcode(
-                                                          context,
-                                                        ),
-                                                child: Row(
-                                                  children: [
-                                                    SvgPicture.asset(
-                                                      ThingsboardImage
-                                                          // translate-me-ignore-next-line
-                                                          .oauth2Logos['qr-code-logo']!,
-                                                      height: 24,
-                                                    ),
-                                                    const SizedBox(width: 8),
-                                                     Text(
-                                                      S.of(context).scanQrCode,
-                                                      style: const TextStyle(
-                                                        color: Colors.black,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                        top: 10,
-                                        bottom: 16,
-                                      ),
-                                      child: Row(
-                                        children: [
-                                          Flexible(
-                                            child: Divider(
-                                              color: Colors.black.withValues(
-                                                alpha: .12,
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                              horizontal: 16,
-                                            ),
-                                            child: Text(
-                                              S.of(context).or,
-                                              style: TbTextStyles.bodyMedium
-                                                  .copyWith(
-                                                    color: Colors.black
-                                                        .withValues(alpha: .54),
-                                                  ),
-                                            ),
-                                          ),
-                                          Flexible(
-                                            child: Divider(
-                                              color: Colors.black.withValues(
-                                                alpha: .12,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    AutofillGroup(
-                                      child: FormBuilder(
-                                        key: _loginFormKey,
-                                        autovalidateMode:
-                                            AutovalidateMode.disabled,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.stretch,
-                                          children: [
-                                            FormBuilderTextField(
-                                              autofillHints: const [
-                                                AutofillHints.email,
-                                              ],
-                                              name: 'username',
-                                              keyboardType:
-                                                  TextInputType.emailAddress,
-                                              validator:
-                                                  FormBuilderValidators.compose([
-                                                    FormBuilderValidators.required(
-                                                      errorText:
-                                                          S
-                                                              .of(context)
-                                                              .emailRequireText,
-                                                    ),
-                                                    FormBuilderValidators.email(
-                                                      errorText:
-                                                          S
-                                                              .of(context)
-                                                              .emailInvalidText,
-                                                    ),
-                                                  ]),
-                                              decoration: InputDecoration(
-                                                border:
-                                                    const OutlineInputBorder(),
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                        color: Colors.black
-                                                            .withValues(
-                                                              alpha: .12,
-                                                            ),
-                                                      ),
-                                                    ),
-                                                labelText: S.of(context).email,
-                                                labelStyle: TbTextStyles
-                                                    .bodyLarge
-                                                    .copyWith(
-                                                      color: Colors.black
-                                                          .withValues(
-                                                            alpha: .54,
-                                                          ),
-                                                    ),
-                                              ),
-                                            ),
-                                            const SizedBox(height: 24),
-                                            ValueListenableBuilder(
-                                              valueListenable:
-                                                  _showPasswordNotifier,
-                                              builder: (
-                                                BuildContext context,
-                                                bool showPassword,
-                                                child,
-                                              ) {
-                                                return FormBuilderTextField(
-                                                  autofillHints: const [
-                                                    AutofillHints.password,
-                                                  ],
-                                                  name: 'password',
-                                                  obscureText: !showPassword,
-                                                  validator: FormBuilderValidators.compose([
-                                                    FormBuilderValidators.required(
-                                                      errorText:
-                                                          S
-                                                              .of(context)
-                                                              .passwordRequireText,
-                                                    ),
-                                                  ]),
-                                                  decoration: InputDecoration(
-                                                    suffixIcon: IconButton(
-                                                      icon: Icon(
-                                                        showPassword
-                                                            ? Icons.visibility
-                                                            : Icons
-                                                                .visibility_off,
-                                                      ),
-                                                      onPressed: () {
-                                                        _showPasswordNotifier
-                                                                .value =
-                                                            !_showPasswordNotifier
-                                                                .value;
-                                                      },
-                                                    ),
-                                                    border:
-                                                        const OutlineInputBorder(),
-                                                    enabledBorder:
-                                                        OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                                color: Colors
-                                                                    .black
-                                                                    .withValues(
-                                                                      alpha:
-                                                                          .12,
-                                                                    ),
-                                                              ),
-                                                        ),
-                                                    labelText:
-                                                        S.of(context).password,
-                                                    labelStyle: TbTextStyles
-                                                        .bodyLarge
-                                                        .copyWith(
-                                                          color: Colors.black
-                                                              .withValues(
-                                                                alpha: .54,
-                                                              ),
-                                                        ),
-                                                  ),
-                                                );
-                                              },
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    const SizedBox(height: 10),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        TextButton(
-                                          onPressed: () {
-                                            _forgotPassword();
-                                          },
-                                          child: Text(
-                                            S.of(context).passwordForgotText,
-                                            style: TbTextStyles.bodyMedium,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    const Spacer(),
-                                    ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                        padding: const EdgeInsets.symmetric(
-                                          vertical: 16,
-                                        ),
-                                      ),
-                                      onPressed: () {
-                                        _login();
-                                      },
-                                      child: Text(
-                                        S.of(context).login,
-                                        style: TbTextStyles.labelMedium,
-                                      ),
-                                    ),
-                                    const SizedBox(height: 48),
+                                    // Visibility(
+                                    //   visible: state.oAuthClients.isEmpty,
+                                    //   child: Column(
+                                    //     crossAxisAlignment:
+                                    //         CrossAxisAlignment.stretch,
+                                    //     children: [
+                                    //       Container(
+                                    //         padding: const EdgeInsets.symmetric(
+                                    //           vertical: 16,
+                                    //         ),
+                                    //         child: Center(
+                                    //           child: Text(
+                                    //             S.of(context).loginWith,
+                                    //             style: TbTextStyles.bodyMedium
+                                    //                 .copyWith(
+                                    //                   color: Colors.black
+                                    //                       .withValues(
+                                    //                         alpha: .54,
+                                    //                       ),
+                                    //                 ),
+                                    //           ),
+                                    //         ),
+                                    //       ),
+                                    //       Row(
+                                    //         mainAxisAlignment:
+                                    //             MainAxisAlignment.center,
+                                    //         children: [
+                                    //           OutlinedButton(
+                                    //             style: _oauth2IconButtonStyle,
+                                    //             onPressed:
+                                    //                 () async =>
+                                    //                     await _onLoginWithBarcode(
+                                    //                       context,
+                                    //                     ),
+                                    //             child: Row(
+                                    //               children: [
+                                    //                 SvgPicture.asset(
+                                    //                   ThingsboardImage
+                                    //                       // translate-me-ignore-next-line
+                                    //                       .oauth2Logos['qr-code-logo']!,
+                                    //                   height: 24,
+                                    //                 ),
+                                    //                 const SizedBox(width: 8),
+                                    //                 Text(
+                                    //                   S.of(context).scanQrCode,
+                                    //                   style: const TextStyle(
+                                    //                     color: Colors.black,
+                                    //                     fontWeight:
+                                    //                         FontWeight.w400,
+                                    //                   ),
+                                    //                 ),
+                                    //               ],
+                                    //             ),
+                                    //           ),
+                                    //         ],
+                                    //       ),
+                                    //     ],
+                                    //   ),
+                                    // ),
+                                    // Padding(
+                                    //   padding: const EdgeInsets.only(
+                                    //     top: 10,
+                                    //     bottom: 16,
+                                    //   ),
+                                    //   child: Row(
+                                    //     children: [
+                                    //       Flexible(
+                                    //         child: Divider(
+                                    //           color: Colors.black.withValues(
+                                    //             alpha: .12,
+                                    //           ),
+                                    //         ),
+                                    //       ),
+                                    //       Padding(
+                                    //         padding: const EdgeInsets.symmetric(
+                                    //           horizontal: 16,
+                                    //         ),
+                                    //         child: Text(
+                                    //           S.of(context).or,
+                                    //           style: TbTextStyles.bodyMedium
+                                    //               .copyWith(
+                                    //                 color: Colors.black
+                                    //                     .withValues(alpha: .54),
+                                    //               ),
+                                    //         ),
+                                    //       ),
+                                    //       Flexible(
+                                    //         child: Divider(
+                                    //           color: Colors.black.withValues(
+                                    //             alpha: .12,
+                                    //           ),
+                                    //         ),
+                                    //       ),
+                                    //     ],
+                                    //   ),
+                                    // ),
+                                    // AutofillGroup(
+                                    //   child: FormBuilder(
+                                    //     key: _loginFormKey,
+                                    //     autovalidateMode:
+                                    //         AutovalidateMode.disabled,
+                                    //     child: Column(
+                                    //       crossAxisAlignment:
+                                    //           CrossAxisAlignment.stretch,
+                                    //       children: [
+                                    //         FormBuilderTextField(
+                                    //           autofillHints: const [
+                                    //             AutofillHints.email,
+                                    //           ],
+                                    //           name: 'username',
+                                    //           keyboardType:
+                                    //               TextInputType.emailAddress,
+                                    //           validator:
+                                    //               FormBuilderValidators.compose([
+                                    //                 FormBuilderValidators.required(
+                                    //                   errorText:
+                                    //                       S
+                                    //                           .of(context)
+                                    //                           .emailRequireText,
+                                    //                 ),
+                                    //                 FormBuilderValidators.email(
+                                    //                   errorText:
+                                    //                       S
+                                    //                           .of(context)
+                                    //                           .emailInvalidText,
+                                    //                 ),
+                                    //               ]),
+                                    //           decoration: InputDecoration(
+                                    //             border:
+                                    //                 const OutlineInputBorder(),
+                                    //             enabledBorder:
+                                    //                 OutlineInputBorder(
+                                    //                   borderSide: BorderSide(
+                                    //                     color: Colors.black
+                                    //                         .withValues(
+                                    //                           alpha: .12,
+                                    //                         ),
+                                    //                   ),
+                                    //                 ),
+                                    //             labelText: S.of(context).email,
+                                    //             labelStyle: TbTextStyles
+                                    //                 .bodyLarge
+                                    //                 .copyWith(
+                                    //                   color: Colors.black
+                                    //                       .withValues(
+                                    //                         alpha: .54,
+                                    //                       ),
+                                    //                 ),
+                                    //           ),
+                                    //         ),
+                                    //         const SizedBox(height: 24),
+                                    //         ValueListenableBuilder(
+                                    //           valueListenable:
+                                    //               _showPasswordNotifier,
+                                    //           builder: (
+                                    //             BuildContext context,
+                                    //             bool showPassword,
+                                    //             child,
+                                    //           ) {
+                                    //             return FormBuilderTextField(
+                                    //               autofillHints: const [
+                                    //                 AutofillHints.password,
+                                    //               ],
+                                    //               name: 'password',
+                                    //               obscureText: !showPassword,
+                                    //               validator: FormBuilderValidators.compose([
+                                    //                 FormBuilderValidators.required(
+                                    //                   errorText:
+                                    //                       S
+                                    //                           .of(context)
+                                    //                           .passwordRequireText,
+                                    //                 ),
+                                    //               ]),
+                                    //               decoration: InputDecoration(
+                                    //                 suffixIcon: IconButton(
+                                    //                   icon: Icon(
+                                    //                     showPassword
+                                    //                         ? Icons.visibility
+                                    //                         : Icons
+                                    //                             .visibility_off,
+                                    //                   ),
+                                    //                   onPressed: () {
+                                    //                     _showPasswordNotifier
+                                    //                             .value =
+                                    //                         !_showPasswordNotifier
+                                    //                             .value;
+                                    //                   },
+                                    //                 ),
+                                    //                 border:
+                                    //                     const OutlineInputBorder(),
+                                    //                 enabledBorder:
+                                    //                     OutlineInputBorder(
+                                    //                       borderSide:
+                                    //                           BorderSide(
+                                    //                             color: Colors
+                                    //                                 .black
+                                    //                                 .withValues(
+                                    //                                   alpha:
+                                    //                                       .12,
+                                    //                                 ),
+                                    //                           ),
+                                    //                     ),
+                                    //                 labelText:
+                                    //                     S.of(context).password,
+                                    //                 labelStyle: TbTextStyles
+                                    //                     .bodyLarge
+                                    //                     .copyWith(
+                                    //                       color: Colors.black
+                                    //                           .withValues(
+                                    //                             alpha: .54,
+                                    //                           ),
+                                    //                     ),
+                                    //               ),
+                                    //             );
+                                    //           },
+                                    //         ),
+                                    //       ],
+                                    //     ),
+                                    //   ),
+                                    // ),
+                                    // const SizedBox(height: 10),
+                                    // Row(
+                                    //   mainAxisAlignment: MainAxisAlignment.end,
+                                    //   children: [
+                                    //     TextButton(
+                                    //       onPressed: () {
+                                    //         _forgotPassword();
+                                    //       },
+                                    //       child: Text(
+                                    //         S.of(context).passwordForgotText,
+                                    //         style: TbTextStyles.bodyMedium,
+                                    //       ),
+                                    //     ),
+                                    //   ],
+                                    // ),
+                                    // const Spacer(),
+                                    // ElevatedButton(
+                                    //   style: ElevatedButton.styleFrom(
+                                    //     padding: const EdgeInsets.symmetric(
+                                    //       vertical: 16,
+                                    //     ),
+                                    //   ),
+                                    //   onPressed: () {
+                                    //     _login();
+                                    //   },
+                                    //   child: Text(
+                                    //     S.of(context).login,
+                                    //     style: TbTextStyles.labelMedium,
+                                    //   ),
+                                    // ),
+                                    // const SizedBox(height: 48),
                                   ],
                                 ),
                               ),
@@ -509,7 +510,7 @@ class _LoginPageState extends TbPageState<LoginPage>
           padding: const EdgeInsets.symmetric(vertical: 16),
           child: Center(
             child: Text(
-             S.of(context).loginWith,
+              S.of(context).loginWith,
               style: TbTextStyles.bodyMedium.copyWith(
                 color: Colors.black.withValues(alpha: .54),
               ),
@@ -531,18 +532,18 @@ class _LoginPageState extends TbPageState<LoginPage>
                   ),
                 )
                 .values,
-            const SizedBox(width: 8),
-            Expanded(
-              child: OutlinedButton(
-                style: _oauth2IconButtonStyle,
-                onPressed: ()  => _onLoginWithBarcode(context),
-                child: SvgPicture.asset(
-                  // translate-me-ignore-next-line
-                  ThingsboardImage.oauth2Logos['qr-code']!,
-                  height: 24,
-                ),
-              ),
-            ),
+            // const SizedBox(width: 8),
+            // Expanded(
+            //   child: OutlinedButton(
+            //     style: _oauth2IconButtonStyle,
+            //     onPressed: () => _onLoginWithBarcode(context),
+            //     child: SvgPicture.asset(
+            //       // translate-me-ignore-next-line
+            //       ThingsboardImage.oauth2Logos['qr-code']!,
+            //       height: 24,
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ],
@@ -573,10 +574,30 @@ class _LoginPageState extends TbPageState<LoginPage>
       }
     }
     icon ??= Icon(Icons.login, size: 24, color: Theme.of(context).primaryColor);
+    var rowChildren = [icon];
+    if (client.name == 'NauticSensors ID') {
+      icon = SvgPicture.asset(
+        'assets/images/bluestar.svg',
+        height: 32,
+        // colorFilter: ColorFilter.mode(
+        //   Theme.of(context).primaryColor,
+        //   BlendMode.srcIn,
+        // ),
+      );
+      rowChildren = [
+        icon,
+        const Padding(
+          padding: EdgeInsets.only(right: 14),
+        ),
+        const Text('NauticSensors ID')
+      ];
+    }
     final button = OutlinedButton(
       style: _oauth2IconButtonStyle,
       onPressed: () => _oauth2ButtonPressed(client),
-      child: icon,
+      child: Row(
+        children: rowChildren,
+      ),
     );
 
     if (expand) {
