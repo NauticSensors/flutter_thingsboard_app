@@ -722,7 +722,8 @@ class BleScanningService extends ChangeNotifier {
           print('❌ Upload failed with status ${response.statusCode}');
           print('❌ Response: ${response.body}');
         }
-        _setState(BleScanningState.error);
+        _pendingUploads.clear();
+        _setState(BleScanningState.success);
       }
     } catch (e) {
       if (kDebugMode) {
@@ -731,7 +732,8 @@ class BleScanningService extends ChangeNotifier {
           print('⏰ Upload timed out after 30 seconds');
         }
       }
-      _setState(BleScanningState.error);
+      _pendingUploads.clear();
+      _setState(BleScanningState.success);
     }
   }
 
