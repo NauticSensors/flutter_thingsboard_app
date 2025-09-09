@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:thingsboard_app/config/routes/router.dart';
@@ -18,6 +20,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final IDeviceInfoService deviceService;
   final ThingsboardClient tbClient;
   final ThingsboardAppRouter router = getIt();
+  
+  static const String _oauthClientsStorageKey = 'cached_oauth_clients';
   Future<void> _onEvent(AuthEvent event, Emitter<AuthState> emit) async {
     switch (event) {
       case AuthFetchEvent():
@@ -50,14 +54,70 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
               }
             }
 
+            // Cache the OAuth clients for offline use
+            await _cacheOAuthClients(loginInfo.oAuth2Clients);
             emit(AuthDataState(oAuthClients: loginInfo.oAuth2Clients));
           } else {
-            emit(const AuthDataState(oAuthClients: []));
+            // Try to load from cache if server response is null
+            final cachedClients = await _loadCachedOAuthClients();
+            emit(AuthDataState(oAuthClients: cachedClients));
           }
         } catch (_) {
-          emit(const AuthDataState(oAuthClients: []));
+          // If server fetch fails, try to load from cache or use fallback
+          final cachedClients = await _loadCachedOAuthClients();
+          final fallbackClients = cachedClients.isEmpty ? _getFallbackOAuthClients() : cachedClients;
+          emit(AuthDataState(oAuthClients: fallbackClients));
         }
 
     }
+  }
+
+  Future<void> _cacheOAuthClients(List<OAuth2ClientInfo> clients) async {
+    try {
+      final storage = getIt<TbStorage>();
+      final clientsJson = clients.map((client) => {
+        'name': client.name,
+        'url': client.url,
+        'icon': client.icon,
+      }).toList();
+      
+      await storage.setItem(_oauthClientsStorageKey, jsonEncode(clientsJson));
+    } catch (e) {
+      // Ignore caching errors to avoid breaking the login flow
+    }
+  }
+
+  Future<List<OAuth2ClientInfo>> _loadCachedOAuthClients() async {
+    try {
+      final storage = getIt<TbStorage>();
+      final cachedData = await storage.getItem(_oauthClientsStorageKey);
+      
+      if (cachedData != null && cachedData is String) {
+        final clientsJson = jsonDecode(cachedData) as List;
+        return clientsJson.map((clientMap) {
+          final clientData = clientMap as Map<String, dynamic>;
+          return OAuth2ClientInfo.fromJson({
+            'name': clientData['name'] as String,
+            'url': clientData['url'] as String,
+            'icon': clientData['icon'] as String?,
+          });
+        }).toList();
+      }
+    } catch (e) {
+      // Ignore cache loading errors
+    }
+    
+    return [];
+  }
+
+  List<OAuth2ClientInfo> _getFallbackOAuthClients() {
+    // Return hardcoded NauticSensors ID client as fallback
+    return [
+      OAuth2ClientInfo.fromJson({
+        'name': 'NauticSensors ID',
+        'url': '/oauth2/authorization/nautic-sensors',
+        'icon': null,
+      }),
+    ];
   }
 }
