@@ -9,10 +9,10 @@ Flutter mobiele applicatie voor het monitoren en beheren van IoT devices via Thi
 ## Development Commands
 
 ```bash
-flutter pub get    # Install dependencies
-flutter run        # Run on connected device/emulator
-flutter build apk  # Build Android APK
-flutter build ios  # Build iOS app
+fvm flutter pub get    # Install dependencies
+fvm flutter run        # Run on connected device/emulator
+fvm flutter build apk  # Build Android APK
+fvm flutter build ios  # Build iOS app
 ```
 
 ## Architecture
