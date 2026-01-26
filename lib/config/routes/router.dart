@@ -16,6 +16,7 @@ import 'package:thingsboard_app/modules/dashboard/domain/entites/dashboard_argum
 import 'package:thingsboard_app/modules/device/device_routes.dart';
 import 'package:thingsboard_app/modules/device/provisioning/route/esp_provisioning_route.dart';
 import 'package:thingsboard_app/modules/home/home_routes.dart';
+import 'package:thingsboard_app/modules/referral/referral_routes.dart';
 import 'package:thingsboard_app/modules/main/main_routes.dart';
 import 'package:thingsboard_app/modules/more/more_routes.dart';
 import 'package:thingsboard_app/modules/notification/routes/notification_routes.dart';
@@ -149,6 +150,7 @@ class ThingsboardAppRouter {
     MoreRoutes(_tbContext).doRegisterRoutes(router);
     VersionRoutes(_tbContext).doRegisterRoutes(router);
     EspProvisioningRoute(_tbContext).doRegisterRoutes(router);
+    ReferralRoutes(_tbContext).doRegisterRoutes(router);
   }
 
   TbContext get tbContext => _tbContext;
