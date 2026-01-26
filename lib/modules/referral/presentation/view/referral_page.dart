@@ -78,7 +78,7 @@ class _ReferralPageState extends TbPageState<ReferralPage> {
 
   Future<void> _shareCode() async {
     if (_referralCode != null) {
-      await Share.share(_shareText, subject: 'NauticSensors kortingscode');
+      await Share.share(_shareText, subject: 'NauticSensors doorverwijscode');
     }
   }
 
@@ -142,7 +142,7 @@ class _ReferralPageState extends TbPageState<ReferralPage> {
         child: Column(
           children: [
             const Text(
-              'JOUW KORTINGSCODE',
+              'JOUW DOORVERWIJSCODE',
               style: TextStyle(
                 fontSize: 12,
                 color: Colors.grey,
