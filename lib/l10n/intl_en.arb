@@ -382,5 +382,31 @@
         "type": "int"
       }
     }
-  }
+  },
+  "referral": "Refer",
+  "referralCode": "REFERRAL CODE",
+  "referralCopy": "Copy",
+  "referralCopied": "Copied!",
+  "referralShare": "Share",
+  "referralScanQr": "Or scan this QR code",
+  "referralCredit": "Credit",
+  "referralReferrals": "Referrals",
+  "referralHowItWorks": "How it works",
+  "referralStep1": "Share the code with another boat owner",
+  "referralStep2": "If this results in a new order of at least €250, this person gets 5% discount",
+  "referralStep3": "You will receive €15 credit for a future order",
+  "referralStep4": "You can build up to €150 in credit",
+  "referralShareSubject": "NauticSensors referral code",
+  "referralShareText": "Get 5% discount at NauticSensors with this code {code} {url}",
+  "@referralShareText": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      },
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "referralLoading": "Loading..."
 }

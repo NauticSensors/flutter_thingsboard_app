@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:thingsboard_app/core/context/tb_context_widget.dart';
+import 'package:thingsboard_app/generated/l10n.dart';
 import 'package:thingsboard_app/thingsboard_client.dart';
 import 'package:thingsboard_app/widgets/tb_app_bar.dart';
 import 'package:thingsboard_app/widgets/tb_progress_indicator.dart';
@@ -21,7 +22,7 @@ class _ReferralPageState extends TbPageState<ReferralPage> {
   String? _referralCode;
   double _referralCredit = 0;
   int _referralCount = 0;
-  String _copyButtonText = 'Kopieer';
+  bool _showCopiedText = false;
 
   @override
   void initState() {
@@ -64,28 +65,31 @@ class _ReferralPageState extends TbPageState<ReferralPage> {
   String get _referralUrl =>
       'https://nauticsensors.com/?ref=${_referralCode ?? ''}';
 
-  String get _shareText =>
-      'Ontvang 5% korting bij NauticSensors met deze code $_referralCode $_referralUrl';
+  String _getShareText(BuildContext context) =>
+      S.of(context).referralShareText(_referralCode ?? '', _referralUrl);
 
   Future<void> _copyCode() async {
     if (_referralCode != null) {
       await Clipboard.setData(ClipboardData(text: _referralCode!));
-      setState(() => _copyButtonText = 'Gekopieerd!');
+      setState(() => _showCopiedText = true);
       await Future.delayed(const Duration(seconds: 2));
-      if (mounted) setState(() => _copyButtonText = 'Kopieer');
+      if (mounted) setState(() => _showCopiedText = false);
     }
   }
 
-  Future<void> _shareCode() async {
+  Future<void> _shareCode(BuildContext context) async {
     if (_referralCode != null) {
-      await Share.share(_shareText, subject: 'NauticSensors doorverwijscode');
+      await Share.share(
+        _getShareText(context),
+        subject: S.of(context).referralShareSubject,
+      );
     }
   }
 
-  Future<void> _shareWhatsApp() async {
+  Future<void> _shareWhatsApp(BuildContext context) async {
     if (_referralCode != null) {
       final url = Uri.parse(
-        'https://wa.me/?text=${Uri.encodeComponent(_shareText)}',
+        'https://wa.me/?text=${Uri.encodeComponent(_getShareText(context))}',
       );
       if (await canLaunchUrl(url)) {
         await launchUrl(url, mode: LaunchMode.externalApplication);
@@ -97,7 +101,7 @@ class _ReferralPageState extends TbPageState<ReferralPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      appBar: TbAppBar(tbContext, title: const Text('Doorverwijzen')),
+      appBar: TbAppBar(tbContext, title: Text(S.of(context).referral)),
       body: Stack(
         children: [
           RefreshIndicator(
@@ -107,11 +111,11 @@ class _ReferralPageState extends TbPageState<ReferralPage> {
               padding: const EdgeInsets.all(16),
               child: Column(
                 children: [
-                  _buildCodeCard(),
+                  _buildCodeCard(context),
                   const SizedBox(height: 16),
-                  _buildStatsCard(),
+                  _buildStatsCard(context),
                   const SizedBox(height: 16),
-                  _buildExplanationCard(),
+                  _buildExplanationCard(context),
                 ],
               ),
             ),
@@ -135,15 +139,15 @@ class _ReferralPageState extends TbPageState<ReferralPage> {
     );
   }
 
-  Widget _buildCodeCard() {
+  Widget _buildCodeCard(BuildContext context) {
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            const Text(
-              'JOUW DOORVERWIJSCODE',
-              style: TextStyle(
+            Text(
+              S.of(context).referralCode,
+              style: const TextStyle(
                 fontSize: 12,
                 color: Colors.grey,
                 fontWeight: FontWeight.w500,
@@ -158,7 +162,7 @@ class _ReferralPageState extends TbPageState<ReferralPage> {
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Text(
-                _referralCode ?? 'Laden...',
+                _referralCode ?? S.of(context).referralLoading,
                 style: const TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
@@ -171,21 +175,23 @@ class _ReferralPageState extends TbPageState<ReferralPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 _ActionButton(
-                  label: _copyButtonText,
+                  label: _showCopiedText
+                      ? S.of(context).referralCopied
+                      : S.of(context).referralCopy,
                   color: Colors.blue,
                   onPressed: _copyCode,
                 ),
                 const SizedBox(width: 8),
                 _ActionButton(
-                  label: 'Delen',
+                  label: S.of(context).referralShare,
                   color: Colors.indigo,
-                  onPressed: _shareCode,
+                  onPressed: () => _shareCode(context),
                 ),
                 const SizedBox(width: 8),
                 _ActionButton(
                   label: 'WhatsApp',
                   color: const Color(0xFF25D366),
-                  onPressed: _shareWhatsApp,
+                  onPressed: () => _shareWhatsApp(context),
                 ),
               ],
             ),
@@ -200,9 +206,9 @@ class _ReferralPageState extends TbPageState<ReferralPage> {
                 backgroundColor: Colors.white,
               ),
               const SizedBox(height: 8),
-              const Text(
-                'Scan voor de webshop',
-                style: TextStyle(fontSize: 12, color: Colors.grey),
+              Text(
+                S.of(context).referralScanQr,
+                style: const TextStyle(fontSize: 12, color: Colors.grey),
               ),
             ],
           ],
@@ -211,7 +217,7 @@ class _ReferralPageState extends TbPageState<ReferralPage> {
     );
   }
 
-  Widget _buildStatsCard() {
+  Widget _buildStatsCard(BuildContext context) {
     final creditFormatted =
         _referralCredit.toStringAsFixed(2).replaceAll('.', ',');
 
@@ -221,11 +227,14 @@ class _ReferralPageState extends TbPageState<ReferralPage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            _StatItem(value: '€$creditFormatted', label: 'Jouw tegoed'),
+            _StatItem(
+              value: '€$creditFormatted',
+              label: S.of(context).referralCredit,
+            ),
             Container(height: 40, width: 1, color: Colors.grey[300]),
             _StatItem(
               value: _referralCount.toString(),
-              label: 'Doorverwijzingen',
+              label: S.of(context).referralReferrals,
             ),
           ],
         ),
@@ -233,24 +242,22 @@ class _ReferralPageState extends TbPageState<ReferralPage> {
     );
   }
 
-  Widget _buildExplanationCard() {
+  Widget _buildExplanationCard(BuildContext context) {
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Hoe het werkt',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+            Text(
+              S.of(context).referralHowItWorks,
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
             ),
             const SizedBox(height: 12),
-            _ExplanationItem('Deel je code met een andere booteigenaar'),
-            _ExplanationItem(
-              'Bij hun bestelling krijgen zij 5% korting (min. €250)',
-            ),
-            _ExplanationItem('Jij ontvangt €15 tegoed voor een volgende bestelling'),
-            _ExplanationItem('Je kunt tot €150 tegoed opbouwen'),
+            _ExplanationItem(S.of(context).referralStep1),
+            _ExplanationItem(S.of(context).referralStep2),
+            _ExplanationItem(S.of(context).referralStep3),
+            _ExplanationItem(S.of(context).referralStep4),
           ],
         ),
       ),

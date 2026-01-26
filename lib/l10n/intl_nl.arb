@@ -382,5 +382,31 @@
         "type": "int"
       }
     }
-  }
+  },
+  "referral": "Doorverwijzen",
+  "referralCode": "DOORVERWIJSCODE",
+  "referralCopy": "Kopieer",
+  "referralCopied": "Gekopieerd!",
+  "referralShare": "Delen",
+  "referralScanQr": "Of scan deze QR code",
+  "referralCredit": "Tegoed",
+  "referralReferrals": "Doorverwijzingen",
+  "referralHowItWorks": "Hoe het werkt",
+  "referralStep1": "Deel de code met een andere booteigenaar",
+  "referralStep2": "Volgt daaruit een nieuwe bestelling van tenminste €250 dan krijgt deze persoon 5% korting",
+  "referralStep3": "U ontvangt €15 tegoed voor een volgende bestelling",
+  "referralStep4": "U kunt tot €150 tegoed opbouwen",
+  "referralShareSubject": "NauticSensors doorverwijscode",
+  "referralShareText": "Ontvang 5% korting bij NauticSensors met deze code {code} {url}",
+  "@referralShareText": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      },
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "referralLoading": "Laden..."
 }

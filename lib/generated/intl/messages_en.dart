@@ -57,12 +57,15 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m12(deviceName) =>
       "Enter PIN of ${deviceName} to confirm proof of possession";
 
+  static String m21(code, url) =>
+      "Get 5% discount at NauticSensors with this code ${code} ${url}";
+
   static String m13(time) =>
       "Resend code in ${Intl.plural(time, one: '1 second', other: '${time} seconds')}";
 
   static String m14(name) => "Route not defined: ${name}";
 
-  static String m21(count) => "${count} entries";
+  static String m22(count) => "${count} entries";
 
   static String m15(count) =>
       "${Intl.plural(count, one: 'Search user', other: 'Search users')}";
@@ -531,6 +534,34 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
     "queue": MessageLookupByLibrary.simpleMessage("Queue"),
     "ready": MessageLookupByLibrary.simpleMessage("Ready"),
+    "referral": MessageLookupByLibrary.simpleMessage("Refer"),
+    "referralCode": MessageLookupByLibrary.simpleMessage("REFERRAL CODE"),
+    "referralCopied": MessageLookupByLibrary.simpleMessage("Copied!"),
+    "referralCopy": MessageLookupByLibrary.simpleMessage("Copy"),
+    "referralCredit": MessageLookupByLibrary.simpleMessage("Credit"),
+    "referralHowItWorks": MessageLookupByLibrary.simpleMessage("How it works"),
+    "referralLoading": MessageLookupByLibrary.simpleMessage("Loading..."),
+    "referralReferrals": MessageLookupByLibrary.simpleMessage("Referrals"),
+    "referralScanQr": MessageLookupByLibrary.simpleMessage(
+      "Or scan this QR code",
+    ),
+    "referralShare": MessageLookupByLibrary.simpleMessage("Share"),
+    "referralShareSubject": MessageLookupByLibrary.simpleMessage(
+      "NauticSensors referral code",
+    ),
+    "referralShareText": m21,
+    "referralStep1": MessageLookupByLibrary.simpleMessage(
+      "Share the code with another boat owner",
+    ),
+    "referralStep2": MessageLookupByLibrary.simpleMessage(
+      "If this results in a new order of at least €250, this person gets 5% discount",
+    ),
+    "referralStep3": MessageLookupByLibrary.simpleMessage(
+      "You will receive €15 credit for a future order",
+    ),
+    "referralStep4": MessageLookupByLibrary.simpleMessage(
+      "You can build up to €150 in credit",
+    ),
     "refresh": MessageLookupByLibrary.simpleMessage("Refresh"),
     "repeatPassword": MessageLookupByLibrary.simpleMessage(
       "Repeat your password",
@@ -574,7 +605,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Uploading sensor data",
     ),
     "scanLogs": MessageLookupByLibrary.simpleMessage("Scan Logs"),
-    "scanLogsEntries": m21,
+    "scanLogsEntries": m22,
     "scanQrCode": MessageLookupByLibrary.simpleMessage("Scan QR code"),
     "scanningForSensors": MessageLookupByLibrary.simpleMessage(
       "Scanning for sensors...",

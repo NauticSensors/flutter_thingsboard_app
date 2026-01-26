@@ -58,12 +58,15 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m12(deviceName) =>
       "Voer PIN van ${deviceName} in om eigendom te bewijzen";
 
+  static String m21(code, url) =>
+      "Ontvang 5% korting bij NauticSensors met deze code ${code} ${url}";
+
   static String m13(time) =>
       "Code opnieuw verzenden in ${Intl.plural(time, one: '1 seconde', other: '${time} seconden')}";
 
   static String m14(name) => "Route niet gedefinieerd: ${name}";
 
-  static String m21(count) => "${count} regels";
+  static String m22(count) => "${count} regels";
 
   static String m15(count) =>
       "${Intl.plural(count, one: 'Zoek gebruiker', other: 'Zoek gebruikers')}";
@@ -552,6 +555,36 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
     "queue": MessageLookupByLibrary.simpleMessage("Wachtrij"),
     "ready": MessageLookupByLibrary.simpleMessage("Klaar"),
+    "referral": MessageLookupByLibrary.simpleMessage("Doorverwijzen"),
+    "referralCode": MessageLookupByLibrary.simpleMessage("DOORVERWIJSCODE"),
+    "referralCopied": MessageLookupByLibrary.simpleMessage("Gekopieerd!"),
+    "referralCopy": MessageLookupByLibrary.simpleMessage("Kopieer"),
+    "referralCredit": MessageLookupByLibrary.simpleMessage("Tegoed"),
+    "referralHowItWorks": MessageLookupByLibrary.simpleMessage("Hoe het werkt"),
+    "referralLoading": MessageLookupByLibrary.simpleMessage("Laden..."),
+    "referralReferrals": MessageLookupByLibrary.simpleMessage(
+      "Doorverwijzingen",
+    ),
+    "referralScanQr": MessageLookupByLibrary.simpleMessage(
+      "Of scan deze QR code",
+    ),
+    "referralShare": MessageLookupByLibrary.simpleMessage("Delen"),
+    "referralShareSubject": MessageLookupByLibrary.simpleMessage(
+      "NauticSensors doorverwijscode",
+    ),
+    "referralShareText": m21,
+    "referralStep1": MessageLookupByLibrary.simpleMessage(
+      "Deel de code met een andere booteigenaar",
+    ),
+    "referralStep2": MessageLookupByLibrary.simpleMessage(
+      "Volgt daaruit een nieuwe bestelling van tenminste €250 dan krijgt deze persoon 5% korting",
+    ),
+    "referralStep3": MessageLookupByLibrary.simpleMessage(
+      "U ontvangt €15 tegoed voor een volgende bestelling",
+    ),
+    "referralStep4": MessageLookupByLibrary.simpleMessage(
+      "U kunt tot €150 tegoed opbouwen",
+    ),
     "refresh": MessageLookupByLibrary.simpleMessage("Vernieuwen"),
     "repeatPassword": MessageLookupByLibrary.simpleMessage(
       "Herhaal uw wachtwoord",
@@ -597,7 +630,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Sensorgegevens uploaden",
     ),
     "scanLogs": MessageLookupByLibrary.simpleMessage("Scanlogs"),
-    "scanLogsEntries": m21,
+    "scanLogsEntries": m22,
     "scanQrCode": MessageLookupByLibrary.simpleMessage("QR code scannen"),
     "scanningForSensors": MessageLookupByLibrary.simpleMessage(
       "Scannen naar sensoren...",
