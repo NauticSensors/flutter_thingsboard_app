@@ -34,22 +34,22 @@ class _ReferralPageState extends TbPageState<ReferralPage> {
     try {
       final customerId = tbClient.getAuthUser()?.customerId;
       if (customerId != null) {
-        final attrs = await tbClient.getAttributeService().getEntityAttributes(
-          EntityId(EntityType.CUSTOMER, customerId),
+        final attrs = await tbClient.getAttributeService().getAttributesByScope(
+          CustomerId(customerId),
           AttributeScope.SERVER_SCOPE.toShortString(),
           ['referral_code', 'referral_credit', 'referral_count'],
         );
 
         for (final attr in attrs) {
-          switch (attr.key) {
+          switch (attr.getKey()) {
             case 'referral_code':
-              _referralCode = attr.value?.toString();
+              _referralCode = attr.getValue()?.toString();
               break;
             case 'referral_credit':
-              _referralCredit = (attr.value as num?)?.toDouble() ?? 0;
+              _referralCredit = (attr.getValue() as num?)?.toDouble() ?? 0;
               break;
             case 'referral_count':
-              _referralCount = (attr.value as num?)?.toInt() ?? 0;
+              _referralCount = (attr.getValue() as num?)?.toInt() ?? 0;
               break;
           }
         }
