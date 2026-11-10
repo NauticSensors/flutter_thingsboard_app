@@ -6,10 +6,12 @@ part of 'oauth_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$oauthHash() => r'27ccf0c8f1ce2150bc90bd69df8c9d0c28cb54ad';
+String _$oauthHash() => r'09cf929ff3855144ce0557994060d3e5f1a7e790';
 
-/// The OAuth2 clients the server offers this app. BlueStar signs in through
-/// OAuth2 only, so upstream's QR code pseudo-client is not added to the list.
+/// The OAuth2 clients the server offers this app, or the cached clients of the
+/// last successful response when the server cannot be reached. BlueStar signs
+/// in through OAuth2 only, so upstream's QR code pseudo-client is not added to
+/// the list.
 ///
 /// Copied from [oauth].
 @ProviderFor(oauth)
