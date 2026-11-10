@@ -1,5 +1,5 @@
 {
-  "appTitle": "ThingsBoard",
+  "appTitle": "BlueStar",
   "home": "Hjem",
   "devices": "{count, plural, =1{Enhed} other{Enheder}}",
   "@devices": {
@@ -15,7 +15,7 @@
   "auditLogs": "Revisionslogfiler",
   "logout": "Log ud",
   "login": "Log ind",
-  "logoDefaultValue": "ThingsBoard-logo",
+  "logoDefaultValue": "BlueStar-logo",
   "loginToYourAccount": "Log ind på din konto",
   "email": "Email",
   "emailRequireText": "Email er påkrævet.",

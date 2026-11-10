@@ -258,7 +258,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "anyType": MessageLookupByLibrary.simpleMessage("Qualsiasi tipo"),
     "apiKey": MessageLookupByLibrary.simpleMessage("Chiave API"),
     "apiUsageState": MessageLookupByLibrary.simpleMessage("Stato utilizzo API"),
-    "appTitle": MessageLookupByLibrary.simpleMessage("ThingsBoard"),
+    "appTitle": MessageLookupByLibrary.simpleMessage("BlueStar"),
     "applyChanges": MessageLookupByLibrary.simpleMessage("Applica modifiche"),
     "areYouSure": MessageLookupByLibrary.simpleMessage("Sei sicuro?"),
     "areYouSureYouWantToDeactivate": m3,
@@ -498,9 +498,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Accedi al tuo account",
     ),
     "loginWith": MessageLookupByLibrary.simpleMessage("Accedi con"),
-    "logoDefaultValue": MessageLookupByLibrary.simpleMessage(
-      "Logo ThingsBoard",
-    ),
+    "logoDefaultValue": MessageLookupByLibrary.simpleMessage("Logo BlueStar"),
     "logout": MessageLookupByLibrary.simpleMessage("Disconnetti"),
     "major": MessageLookupByLibrary.simpleMessage("Grave"),
     "markAllAsRead": MessageLookupByLibrary.simpleMessage(

@@ -81,13 +81,20 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m21(deviceName) =>
       "Enter PIN of ${deviceName} to confirm proof of possession";
 
+  static String m30(code, url) =>
+      "Get 5% discount at NauticSensors with this code ${code} ${url}";
+
   static String m22(time) =>
       "Resend code in ${Intl.plural(time, one: '1 second', other: '${time} seconds')}";
 
   static String m23(name) => "Route not defined: ${name}";
 
+  static String m31(count) => "${count} entries";
+
   static String m24(count) =>
       "${Intl.plural(count, one: 'Search user', other: 'Search users')}";
+
+  static String m32(count) => "${count} found";
 
   static String m25(contact) =>
       "A security code has been sent to your phone at ${contact}.";
@@ -254,7 +261,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "anyType": MessageLookupByLibrary.simpleMessage("Any type"),
     "apiKey": MessageLookupByLibrary.simpleMessage("Api key"),
     "apiUsageState": MessageLookupByLibrary.simpleMessage("API Usage State"),
-    "appTitle": MessageLookupByLibrary.simpleMessage("ThingsBoard"),
+    "appTitle": MessageLookupByLibrary.simpleMessage("BlueStar"),
     "applyChanges": MessageLookupByLibrary.simpleMessage("Apply changes"),
     "areYouSure": MessageLookupByLibrary.simpleMessage("Are you sure?"),
     "areYouSureYouWantToDeactivate": m3,
@@ -305,6 +312,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Device has been\nsuccessfully claimed",
     ),
     "clear": MessageLookupByLibrary.simpleMessage("Clear"),
+    "clearLogs": MessageLookupByLibrary.simpleMessage("Clear logs"),
     "cleared": MessageLookupByLibrary.simpleMessage("Cleared"),
     "close": MessageLookupByLibrary.simpleMessage("Close"),
     "codeVerificationFailed": MessageLookupByLibrary.simpleMessage(
@@ -414,6 +422,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "entityType": MessageLookupByLibrary.simpleMessage("Entity Type"),
     "entityView": MessageLookupByLibrary.simpleMessage("Entity view"),
     "errorOccured": m13,
+    "errorOccurredDuringScanning": MessageLookupByLibrary.simpleMessage(
+      "Error occurred during scanning",
+    ),
     "errorSendingCode": m14,
     "europe": MessageLookupByLibrary.simpleMessage("Europe"),
     "europeRegionShort": MessageLookupByLibrary.simpleMessage("Frankfurt"),
@@ -490,9 +501,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Login to your account",
     ),
     "loginWith": MessageLookupByLibrary.simpleMessage("Login with"),
-    "logoDefaultValue": MessageLookupByLibrary.simpleMessage(
-      "ThingsBoard Logo",
-    ),
+    "logoDefaultValue": MessageLookupByLibrary.simpleMessage("BlueStar Logo"),
     "logout": MessageLookupByLibrary.simpleMessage("Log Out"),
     "major": MessageLookupByLibrary.simpleMessage("Major"),
     "markAllAsRead": MessageLookupByLibrary.simpleMessage("Mark all as read"),
@@ -551,6 +560,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "No notifications found",
     ),
     "noResultsFound": MessageLookupByLibrary.simpleMessage("No results found"),
+    "noScanLogsYet": MessageLookupByLibrary.simpleMessage("No scan logs yet"),
     "noTenantsFound": MessageLookupByLibrary.simpleMessage("No tenants found"),
     "northAmerica": MessageLookupByLibrary.simpleMessage("North America"),
     "northAmericaRegionShort": MessageLookupByLibrary.simpleMessage(
@@ -650,6 +660,34 @@ class MessageLookup extends MessageLookupByLibrary {
     "queue": MessageLookupByLibrary.simpleMessage("Queue"),
     "queueStats": MessageLookupByLibrary.simpleMessage("Queue stats"),
     "ready": MessageLookupByLibrary.simpleMessage("Ready"),
+    "referral": MessageLookupByLibrary.simpleMessage("Refer"),
+    "referralCode": MessageLookupByLibrary.simpleMessage("REFERRAL CODE"),
+    "referralCopied": MessageLookupByLibrary.simpleMessage("Copied!"),
+    "referralCopy": MessageLookupByLibrary.simpleMessage("Copy"),
+    "referralCredit": MessageLookupByLibrary.simpleMessage("Credit"),
+    "referralHowItWorks": MessageLookupByLibrary.simpleMessage("How it works"),
+    "referralLoading": MessageLookupByLibrary.simpleMessage("Loading..."),
+    "referralReferrals": MessageLookupByLibrary.simpleMessage("Referrals"),
+    "referralScanQr": MessageLookupByLibrary.simpleMessage(
+      "Or scan this QR code",
+    ),
+    "referralShare": MessageLookupByLibrary.simpleMessage("Share"),
+    "referralShareSubject": MessageLookupByLibrary.simpleMessage(
+      "NauticSensors referral code",
+    ),
+    "referralShareText": m30,
+    "referralStep1": MessageLookupByLibrary.simpleMessage(
+      "Share the code with another boat owner",
+    ),
+    "referralStep2": MessageLookupByLibrary.simpleMessage(
+      "If this results in a new order of at least €250, this person gets 5% discount",
+    ),
+    "referralStep3": MessageLookupByLibrary.simpleMessage(
+      "You will receive €15 credit for a future order",
+    ),
+    "referralStep4": MessageLookupByLibrary.simpleMessage(
+      "You can build up to €150 in credit",
+    ),
     "refresh": MessageLookupByLibrary.simpleMessage("Refresh"),
     "repeatPassword": MessageLookupByLibrary.simpleMessage(
       "Repeat your password",
@@ -676,7 +714,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "ruleChain": MessageLookupByLibrary.simpleMessage("Rule chain"),
     "ruleNode": MessageLookupByLibrary.simpleMessage("Rule node"),
     "scanACode": MessageLookupByLibrary.simpleMessage("Scan a code"),
+    "scanLogs": MessageLookupByLibrary.simpleMessage("Scan Logs"),
+    "scanLogsEntries": m31,
     "scanQrCode": MessageLookupByLibrary.simpleMessage("Scan QR code"),
+    "scanningForSensors": MessageLookupByLibrary.simpleMessage(
+      "Scanning for sensors...",
+    ),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
     "searchResults": MessageLookupByLibrary.simpleMessage("Search results"),
     "searchUsers": m24,
@@ -696,6 +739,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "sendingWifiCredentials": MessageLookupByLibrary.simpleMessage(
       "Sending Wi-Fi credentials",
     ),
+    "sensorScanner": MessageLookupByLibrary.simpleMessage("Sensor Scanner"),
+    "sensorScannerDescription": MessageLookupByLibrary.simpleMessage(
+      "Directly collect sensor data from nearby sensors and upload to the platform. Ideal for situations where a bridge device is absent or has no network connectivity.",
+    ),
+    "sensorScannerReady": MessageLookupByLibrary.simpleMessage(
+      "Sensor Scanner Ready",
+    ),
+    "sensorsFound": m32,
     "setUpAVerificationMethod": MessageLookupByLibrary.simpleMessage(
       "Set up a verification method",
     ),
@@ -716,6 +767,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "somethingWentWrongRollback": MessageLookupByLibrary.simpleMessage(
       "Something went wrong ... Rollback",
+    ),
+    "startScanningToSeeLogs": MessageLookupByLibrary.simpleMessage(
+      "Start scanning to see logs here",
     ),
     "startTime": MessageLookupByLibrary.simpleMessage("Start time"),
     "stateOrProvince": MessageLookupByLibrary.simpleMessage("State / Province"),
@@ -782,6 +836,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "update": MessageLookupByLibrary.simpleMessage("Update"),
     "updateRequired": MessageLookupByLibrary.simpleMessage("Update required"),
     "updateTo": m27,
+    "uploadCompletedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Upload completed successfully",
+    ),
+    "uploadFailed": MessageLookupByLibrary.simpleMessage("Upload failed"),
+    "uploadingScanResults": MessageLookupByLibrary.simpleMessage(
+      "Uploading scan results...",
+    ),
     "url": MessageLookupByLibrary.simpleMessage("Url"),
     "user": MessageLookupByLibrary.simpleMessage("User"),
     "username": MessageLookupByLibrary.simpleMessage("username"),

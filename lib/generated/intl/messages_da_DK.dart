@@ -255,7 +255,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "anyType": MessageLookupByLibrary.simpleMessage("Enhver type"),
     "apiKey": MessageLookupByLibrary.simpleMessage("API-nøgle"),
     "apiUsageState": MessageLookupByLibrary.simpleMessage("API-brugstilstand"),
-    "appTitle": MessageLookupByLibrary.simpleMessage("ThingsBoard"),
+    "appTitle": MessageLookupByLibrary.simpleMessage("BlueStar"),
     "applyChanges": MessageLookupByLibrary.simpleMessage("Anvend ændringer"),
     "areYouSure": MessageLookupByLibrary.simpleMessage("Er du sikker?"),
     "areYouSureYouWantToDeactivate": m3,
@@ -489,9 +489,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Log ind på din konto",
     ),
     "loginWith": MessageLookupByLibrary.simpleMessage("Log ind med"),
-    "logoDefaultValue": MessageLookupByLibrary.simpleMessage(
-      "ThingsBoard-logo",
-    ),
+    "logoDefaultValue": MessageLookupByLibrary.simpleMessage("BlueStar-logo"),
     "logout": MessageLookupByLibrary.simpleMessage("Log ud"),
     "major": MessageLookupByLibrary.simpleMessage("Alvorlig"),
     "markAllAsRead": MessageLookupByLibrary.simpleMessage(

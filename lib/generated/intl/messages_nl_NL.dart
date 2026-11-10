@@ -82,13 +82,20 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m21(deviceName) =>
       "Voer de pincode van ${deviceName} in om eigendomsbewijs te bevestigen";
 
+  static String m30(code, url) =>
+      "Ontvang 5% korting bij NauticSensors met deze code ${code} ${url}";
+
   static String m22(time) =>
       "Code opnieuw verzenden in ${Intl.plural(time, one: '1 seconde', other: '${time} seconden')}";
 
   static String m23(name) => "Route niet gedefinieerd: ${name}";
 
+  static String m31(count) => "${count} regels";
+
   static String m24(count) =>
       "${Intl.plural(count, one: 'Gebruiker zoeken', other: 'Gebruikers zoeken')}";
+
+  static String m32(count) => "${count} gevonden";
 
   static String m25(contact) =>
       "Er is een beveiligingscode verzonden naar uw telefoon op ${contact}.";
@@ -255,7 +262,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "anyType": MessageLookupByLibrary.simpleMessage("Elk type"),
     "apiKey": MessageLookupByLibrary.simpleMessage("API-sleutel"),
     "apiUsageState": MessageLookupByLibrary.simpleMessage("API-gebruiksstatus"),
-    "appTitle": MessageLookupByLibrary.simpleMessage("ThingsBoard"),
+    "appTitle": MessageLookupByLibrary.simpleMessage("BlueStar"),
     "applyChanges": MessageLookupByLibrary.simpleMessage(
       "Wijzigingen toepassen",
     ),
@@ -310,6 +317,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Apparaat is\nsuccesvol geclaimd",
     ),
     "clear": MessageLookupByLibrary.simpleMessage("Wissen"),
+    "clearLogs": MessageLookupByLibrary.simpleMessage("Logs wissen"),
     "cleared": MessageLookupByLibrary.simpleMessage("Gewist"),
     "close": MessageLookupByLibrary.simpleMessage("Sluiten"),
     "codeVerificationFailed": MessageLookupByLibrary.simpleMessage(
@@ -431,6 +439,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "entityType": MessageLookupByLibrary.simpleMessage("Entiteitstype"),
     "entityView": MessageLookupByLibrary.simpleMessage("Entiteitsweergave"),
     "errorOccured": m13,
+    "errorOccurredDuringScanning": MessageLookupByLibrary.simpleMessage(
+      "Fout opgetreden tijdens scannen",
+    ),
     "errorSendingCode": m14,
     "europe": MessageLookupByLibrary.simpleMessage("Europa"),
     "europeRegionShort": MessageLookupByLibrary.simpleMessage("Frankfurt"),
@@ -501,9 +512,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Log in op uw account",
     ),
     "loginWith": MessageLookupByLibrary.simpleMessage("Inloggen met"),
-    "logoDefaultValue": MessageLookupByLibrary.simpleMessage(
-      "ThingsBoard-logo",
-    ),
+    "logoDefaultValue": MessageLookupByLibrary.simpleMessage("BlueStar-logo"),
     "logout": MessageLookupByLibrary.simpleMessage("Uitloggen"),
     "major": MessageLookupByLibrary.simpleMessage("Ernstig"),
     "markAllAsRead": MessageLookupByLibrary.simpleMessage(
@@ -560,6 +569,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "noResultsFound": MessageLookupByLibrary.simpleMessage(
       "Geen resultaten gevonden",
     ),
+    "noScanLogsYet": MessageLookupByLibrary.simpleMessage("Nog geen scanlogs"),
     "northAmerica": MessageLookupByLibrary.simpleMessage("Noord-Amerika"),
     "northAmericaRegionShort": MessageLookupByLibrary.simpleMessage(
       "N. Virginia",
@@ -660,6 +670,36 @@ class MessageLookup extends MessageLookupByLibrary {
     "queue": MessageLookupByLibrary.simpleMessage("Wachtrij"),
     "queueStats": MessageLookupByLibrary.simpleMessage("Wachtrijstatistieken"),
     "ready": MessageLookupByLibrary.simpleMessage("Gereed"),
+    "referral": MessageLookupByLibrary.simpleMessage("Doorverwijzen"),
+    "referralCode": MessageLookupByLibrary.simpleMessage("DOORVERWIJSCODE"),
+    "referralCopied": MessageLookupByLibrary.simpleMessage("Gekopieerd!"),
+    "referralCopy": MessageLookupByLibrary.simpleMessage("Kopieer"),
+    "referralCredit": MessageLookupByLibrary.simpleMessage("Tegoed"),
+    "referralHowItWorks": MessageLookupByLibrary.simpleMessage("Hoe het werkt"),
+    "referralLoading": MessageLookupByLibrary.simpleMessage("Laden..."),
+    "referralReferrals": MessageLookupByLibrary.simpleMessage(
+      "Doorverwijzingen",
+    ),
+    "referralScanQr": MessageLookupByLibrary.simpleMessage(
+      "Of scan deze QR code",
+    ),
+    "referralShare": MessageLookupByLibrary.simpleMessage("Delen"),
+    "referralShareSubject": MessageLookupByLibrary.simpleMessage(
+      "NauticSensors doorverwijscode",
+    ),
+    "referralShareText": m30,
+    "referralStep1": MessageLookupByLibrary.simpleMessage(
+      "Deel de code met een andere booteigenaar",
+    ),
+    "referralStep2": MessageLookupByLibrary.simpleMessage(
+      "Volgt daaruit een nieuwe bestelling van tenminste €250 dan krijgt deze persoon 5% korting",
+    ),
+    "referralStep3": MessageLookupByLibrary.simpleMessage(
+      "U ontvangt €15 tegoed voor een volgende bestelling",
+    ),
+    "referralStep4": MessageLookupByLibrary.simpleMessage(
+      "U kunt tot €150 tegoed opbouwen",
+    ),
     "refresh": MessageLookupByLibrary.simpleMessage("Verversen"),
     "repeatPassword": MessageLookupByLibrary.simpleMessage(
       "Herhaal uw wachtwoord",
@@ -688,7 +728,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "ruleChain": MessageLookupByLibrary.simpleMessage("Regelketen"),
     "ruleNode": MessageLookupByLibrary.simpleMessage("Regelknooppunt"),
     "scanACode": MessageLookupByLibrary.simpleMessage("Scan een code"),
+    "scanLogs": MessageLookupByLibrary.simpleMessage("Scanlogs"),
+    "scanLogsEntries": m31,
     "scanQrCode": MessageLookupByLibrary.simpleMessage("QR-code scannen"),
+    "scanningForSensors": MessageLookupByLibrary.simpleMessage(
+      "Scannen naar sensoren...",
+    ),
     "search": MessageLookupByLibrary.simpleMessage("Zoeken"),
     "searchResults": MessageLookupByLibrary.simpleMessage("Zoekresultaten"),
     "searchUsers": m24,
@@ -710,6 +755,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "sendingWifiCredentials": MessageLookupByLibrary.simpleMessage(
       "Wi-Fi-inloggegevens verzenden",
     ),
+    "sensorScanner": MessageLookupByLibrary.simpleMessage("Sensorscanner"),
+    "sensorScannerDescription": MessageLookupByLibrary.simpleMessage(
+      "Verzamel direct sensorgegevens van nabijgelegen sensoren en upload naar het platform. Ideaal voor situaties waar een bridge-apparaat ontbreekt of geen netwerkverbinding heeft.",
+    ),
+    "sensorScannerReady": MessageLookupByLibrary.simpleMessage(
+      "Sensorscanner gereed",
+    ),
+    "sensorsFound": m32,
     "setUpAVerificationMethod": MessageLookupByLibrary.simpleMessage(
       "Verificatiemethode instellen",
     ),
@@ -730,6 +783,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "somethingWentWrongRollback": MessageLookupByLibrary.simpleMessage(
       "Er is iets misgegaan ... Terugdraaien",
+    ),
+    "startScanningToSeeLogs": MessageLookupByLibrary.simpleMessage(
+      "Begin met scannen om hier logs te zien",
     ),
     "startTime": MessageLookupByLibrary.simpleMessage("Starttijd"),
     "stateOrProvince": MessageLookupByLibrary.simpleMessage(
@@ -801,6 +857,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "update": MessageLookupByLibrary.simpleMessage("Bijwerken"),
     "updateRequired": MessageLookupByLibrary.simpleMessage("Update vereist"),
     "updateTo": m27,
+    "uploadCompletedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Upload succesvol voltooid",
+    ),
+    "uploadFailed": MessageLookupByLibrary.simpleMessage("Upload mislukt"),
+    "uploadingScanResults": MessageLookupByLibrary.simpleMessage(
+      "Scanresultaten uploaden...",
+    ),
     "url": MessageLookupByLibrary.simpleMessage("URL"),
     "user": MessageLookupByLibrary.simpleMessage("Gebruiker"),
     "username": MessageLookupByLibrary.simpleMessage("gebruikersnaam"),

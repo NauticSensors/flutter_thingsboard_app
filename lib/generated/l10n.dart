@@ -54,9 +54,9 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `ThingsBoard`
+  /// `BlueStar`
   String get appTitle {
-    return Intl.message('ThingsBoard', name: 'appTitle', desc: '', args: []);
+    return Intl.message('BlueStar', name: 'appTitle', desc: '', args: []);
   }
 
   /// `Home`
@@ -161,10 +161,10 @@ class S {
     return Intl.message('Log In', name: 'login', desc: '', args: []);
   }
 
-  /// `ThingsBoard Logo`
+  /// `BlueStar Logo`
   String get logoDefaultValue {
     return Intl.message(
-      'ThingsBoard Logo',
+      'BlueStar Logo',
       name: 'logoDefaultValue',
       desc: '',
       args: [],
@@ -3331,6 +3331,271 @@ class S {
       name: 'markSelectedNotificationsAsRead',
       desc: '',
       args: [count],
+    );
+  }
+
+  /// `Sensor Scanner`
+  String get sensorScanner {
+    return Intl.message(
+      'Sensor Scanner',
+      name: 'sensorScanner',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Directly collect sensor data from nearby sensors and upload to the platform. Ideal for situations where a bridge device is absent or has no network connectivity.`
+  String get sensorScannerDescription {
+    return Intl.message(
+      'Directly collect sensor data from nearby sensors and upload to the platform. Ideal for situations where a bridge device is absent or has no network connectivity.',
+      name: 'sensorScannerDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sensor Scanner Ready`
+  String get sensorScannerReady {
+    return Intl.message(
+      'Sensor Scanner Ready',
+      name: 'sensorScannerReady',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scanning for sensors...`
+  String get scanningForSensors {
+    return Intl.message(
+      'Scanning for sensors...',
+      name: 'scanningForSensors',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Uploading scan results...`
+  String get uploadingScanResults {
+    return Intl.message(
+      'Uploading scan results...',
+      name: 'uploadingScanResults',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload completed successfully`
+  String get uploadCompletedSuccessfully {
+    return Intl.message(
+      'Upload completed successfully',
+      name: 'uploadCompletedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload failed`
+  String get uploadFailed {
+    return Intl.message(
+      'Upload failed',
+      name: 'uploadFailed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error occurred during scanning`
+  String get errorOccurredDuringScanning {
+    return Intl.message(
+      'Error occurred during scanning',
+      name: 'errorOccurredDuringScanning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{count} found`
+  String sensorsFound(int count) {
+    return Intl.message(
+      '$count found',
+      name: 'sensorsFound',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// `Scan Logs`
+  String get scanLogs {
+    return Intl.message('Scan Logs', name: 'scanLogs', desc: '', args: []);
+  }
+
+  /// `No scan logs yet`
+  String get noScanLogsYet {
+    return Intl.message(
+      'No scan logs yet',
+      name: 'noScanLogsYet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start scanning to see logs here`
+  String get startScanningToSeeLogs {
+    return Intl.message(
+      'Start scanning to see logs here',
+      name: 'startScanningToSeeLogs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clear logs`
+  String get clearLogs {
+    return Intl.message('Clear logs', name: 'clearLogs', desc: '', args: []);
+  }
+
+  /// `{count} entries`
+  String scanLogsEntries(int count) {
+    return Intl.message(
+      '$count entries',
+      name: 'scanLogsEntries',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// `Refer`
+  String get referral {
+    return Intl.message('Refer', name: 'referral', desc: '', args: []);
+  }
+
+  /// `REFERRAL CODE`
+  String get referralCode {
+    return Intl.message(
+      'REFERRAL CODE',
+      name: 'referralCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Copy`
+  String get referralCopy {
+    return Intl.message('Copy', name: 'referralCopy', desc: '', args: []);
+  }
+
+  /// `Copied!`
+  String get referralCopied {
+    return Intl.message('Copied!', name: 'referralCopied', desc: '', args: []);
+  }
+
+  /// `Share`
+  String get referralShare {
+    return Intl.message('Share', name: 'referralShare', desc: '', args: []);
+  }
+
+  /// `Or scan this QR code`
+  String get referralScanQr {
+    return Intl.message(
+      'Or scan this QR code',
+      name: 'referralScanQr',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Credit`
+  String get referralCredit {
+    return Intl.message('Credit', name: 'referralCredit', desc: '', args: []);
+  }
+
+  /// `Referrals`
+  String get referralReferrals {
+    return Intl.message(
+      'Referrals',
+      name: 'referralReferrals',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How it works`
+  String get referralHowItWorks {
+    return Intl.message(
+      'How it works',
+      name: 'referralHowItWorks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Share the code with another boat owner`
+  String get referralStep1 {
+    return Intl.message(
+      'Share the code with another boat owner',
+      name: 'referralStep1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `If this results in a new order of at least €250, this person gets 5% discount`
+  String get referralStep2 {
+    return Intl.message(
+      'If this results in a new order of at least €250, this person gets 5% discount',
+      name: 'referralStep2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You will receive €15 credit for a future order`
+  String get referralStep3 {
+    return Intl.message(
+      'You will receive €15 credit for a future order',
+      name: 'referralStep3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can build up to €150 in credit`
+  String get referralStep4 {
+    return Intl.message(
+      'You can build up to €150 in credit',
+      name: 'referralStep4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `NauticSensors referral code`
+  String get referralShareSubject {
+    return Intl.message(
+      'NauticSensors referral code',
+      name: 'referralShareSubject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Get 5% discount at NauticSensors with this code {code} {url}`
+  String referralShareText(String code, String url) {
+    return Intl.message(
+      'Get 5% discount at NauticSensors with this code $code $url',
+      name: 'referralShareText',
+      desc: '',
+      args: [code, url],
+    );
+  }
+
+  /// `Loading...`
+  String get referralLoading {
+    return Intl.message(
+      'Loading...',
+      name: 'referralLoading',
+      desc: '',
+      args: [],
     );
   }
 }

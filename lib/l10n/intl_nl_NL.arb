@@ -1,5 +1,5 @@
 {
-  "appTitle": "ThingsBoard",
+  "appTitle": "BlueStar",
   "home": "Startpagina",
   "devices": "{count, plural, =1{Apparaat} other{Apparaten}}",
   "@devices": {
@@ -15,7 +15,7 @@
   "auditLogs": "Auditlogboeken",
   "logout": "Uitloggen",
   "login": "Inloggen",
-  "logoDefaultValue": "ThingsBoard-logo",
+  "logoDefaultValue": "BlueStar-logo",
   "loginToYourAccount": "Log in op uw account",
   "email": "E-mail",
   "emailRequireText": "E-mail is verplicht.",
@@ -465,5 +465,59 @@
         "type": "int"
       }
     }
-  }
+  },
+  "sensorScanner": "Sensorscanner",
+  "sensorScannerDescription": "Verzamel direct sensorgegevens van nabijgelegen sensoren en upload naar het platform. Ideaal voor situaties waar een bridge-apparaat ontbreekt of geen netwerkverbinding heeft.",
+  "sensorScannerReady": "Sensorscanner gereed",
+  "scanningForSensors": "Scannen naar sensoren...",
+  "uploadingScanResults": "Scanresultaten uploaden...",
+  "uploadCompletedSuccessfully": "Upload succesvol voltooid",
+  "uploadFailed": "Upload mislukt",
+  "errorOccurredDuringScanning": "Fout opgetreden tijdens scannen",
+  "sensorsFound": "{count} gevonden",
+  "@sensorsFound": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "scanLogs": "Scanlogs",
+  "noScanLogsYet": "Nog geen scanlogs",
+  "startScanningToSeeLogs": "Begin met scannen om hier logs te zien",
+  "clearLogs": "Logs wissen",
+  "scanLogsEntries": "{count} regels",
+  "@scanLogsEntries": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "referral": "Doorverwijzen",
+  "referralCode": "DOORVERWIJSCODE",
+  "referralCopy": "Kopieer",
+  "referralCopied": "Gekopieerd!",
+  "referralShare": "Delen",
+  "referralScanQr": "Of scan deze QR code",
+  "referralCredit": "Tegoed",
+  "referralReferrals": "Doorverwijzingen",
+  "referralHowItWorks": "Hoe het werkt",
+  "referralStep1": "Deel de code met een andere booteigenaar",
+  "referralStep2": "Volgt daaruit een nieuwe bestelling van tenminste €250 dan krijgt deze persoon 5% korting",
+  "referralStep3": "U ontvangt €15 tegoed voor een volgende bestelling",
+  "referralStep4": "U kunt tot €150 tegoed opbouwen",
+  "referralShareSubject": "NauticSensors doorverwijscode",
+  "referralShareText": "Ontvang 5% korting bij NauticSensors met deze code {code} {url}",
+  "@referralShareText": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      },
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "referralLoading": "Laden..."
 }

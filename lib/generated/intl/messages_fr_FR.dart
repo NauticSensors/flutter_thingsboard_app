@@ -263,7 +263,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "apiUsageState": MessageLookupByLibrary.simpleMessage(
       "État d\'utilisation de l\'API",
     ),
-    "appTitle": MessageLookupByLibrary.simpleMessage("ThingsBoard"),
+    "appTitle": MessageLookupByLibrary.simpleMessage("BlueStar"),
     "applyChanges": MessageLookupByLibrary.simpleMessage(
       "Appliquer les modifications",
     ),
@@ -521,9 +521,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Connectez-vous à votre compte",
     ),
     "loginWith": MessageLookupByLibrary.simpleMessage("Se connecter avec"),
-    "logoDefaultValue": MessageLookupByLibrary.simpleMessage(
-      "Logo ThingsBoard",
-    ),
+    "logoDefaultValue": MessageLookupByLibrary.simpleMessage("Logo BlueStar"),
     "logout": MessageLookupByLibrary.simpleMessage("Déconnexion"),
     "major": MessageLookupByLibrary.simpleMessage("Majeur"),
     "markAllAsRead": MessageLookupByLibrary.simpleMessage(

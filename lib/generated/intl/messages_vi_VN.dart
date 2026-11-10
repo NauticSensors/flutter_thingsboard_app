@@ -257,7 +257,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "apiUsageState": MessageLookupByLibrary.simpleMessage(
       "Trạng thái sử dụng API",
     ),
-    "appTitle": MessageLookupByLibrary.simpleMessage("ThingsBoard"),
+    "appTitle": MessageLookupByLibrary.simpleMessage("BlueStar"),
     "applyChanges": MessageLookupByLibrary.simpleMessage("Áp dụng thay đổi"),
     "areYouSure": MessageLookupByLibrary.simpleMessage("Bạn có chắc chắn?"),
     "areYouSureYouWantToDeactivate": m3,
@@ -501,9 +501,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Đăng nhập vào tài khoản của bạn",
     ),
     "loginWith": MessageLookupByLibrary.simpleMessage("Đăng nhập bằng"),
-    "logoDefaultValue": MessageLookupByLibrary.simpleMessage(
-      "Logo ThingsBoard",
-    ),
+    "logoDefaultValue": MessageLookupByLibrary.simpleMessage("Logo BlueStar"),
     "logout": MessageLookupByLibrary.simpleMessage("Đăng xuất"),
     "major": MessageLookupByLibrary.simpleMessage("Chính"),
     "markAllAsRead": MessageLookupByLibrary.simpleMessage(
