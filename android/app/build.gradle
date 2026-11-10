@@ -35,6 +35,19 @@ def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
+// Release signing: android/key.properties (not in git) points to the upload
+// keystore. Without it the release build falls back to the debug key, so
+// `flutter run --release` keeps working on a machine without the keystore.
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+def hasReleaseKeystore = keystorePropertiesFile.exists()
+if (hasReleaseKeystore) {
+    keystorePropertiesFile.withInputStream { stream ->
+        keystoreProperties.load(stream)
+    }
+} else {
+    logger.warn('android/key.properties not found: release builds are signed with the debug key')
+}
 def customScheme = getDartDefineValue('thingsboardOAuth2CallbackUrlScheme') ?: 'org.thingsboard.app.auth'
 def customLabel = getDartDefineValue('androidApplicationName') ?: 'Thingsboard app'
 def appLinksUrlHost = getDartDefineValue('appLinksUrlHost') ?: 'demo.thingsboard.io'
@@ -62,6 +75,16 @@ namespace "org.thingsboard.app"
     appLinksUrlScheme: appLinksUrlScheme
 ]
     }
+    signingConfigs {
+        release {
+            if (hasReleaseKeystore) {
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+                storeFile file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+            }
+        }
+    }
 compileOptions {
         coreLibraryDesugaringEnabled true 
         sourceCompatibility JavaVersion.VERSION_17
@@ -72,9 +95,7 @@ compileOptions {
     }
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+            signingConfig hasReleaseKeystore ? signingConfigs.release : signingConfigs.debug
             // Custom proguard rules
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
