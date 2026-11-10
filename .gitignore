@@ -48,3 +48,7 @@ app_constants.json
 # FVM Version Cache
 .fvm/
 WARP.md
+
+# Local app configuration (dart-defines). Copy configs.sample.json and fill in
+# the app secrets from the ThingsBoard mobile center.
+configs.json
