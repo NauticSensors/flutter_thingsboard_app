@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:thingsboard_app/config/routes/v2/routes_config/routes/alarm_routes.dart';
 import 'package:thingsboard_app/config/routes/v2/routes_config/routes/asset_routes.dart';
 import 'package:thingsboard_app/config/routes/v2/routes_config/routes/audit_log_routes.dart';
+import 'package:thingsboard_app/config/routes/v2/routes_config/routes/ble_scanner_routes.dart';
 import 'package:thingsboard_app/config/routes/v2/routes_config/routes/customer_routes.dart';
 import 'package:thingsboard_app/config/routes/v2/routes_config/routes/dashboard_routes.dart';
 import 'package:thingsboard_app/config/routes/v2/routes_config/routes/device_routes.dart';
@@ -28,6 +29,7 @@ final allMainPages = [
   ...urlRoutes,
   ...espProvisioningRoutes,
   ...profileRoutes,
+  ...bleScannerRoutes,
 ];
 List<RouteBase> getMainRoutes() {
   return [

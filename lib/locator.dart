@@ -1,9 +1,12 @@
 import 'package:event_bus/event_bus.dart';
 import 'package:get_it/get_it.dart';
 import 'package:thingsboard_app/config/routes/router.dart';
+import 'package:thingsboard_app/constants/bluestar_constants.dart';
 import 'package:thingsboard_app/core/logger/tb_logger.dart';
 import 'package:thingsboard_app/core/usecases/user_details_usecase.dart';
 import 'package:thingsboard_app/thingsboard_client.dart' hide UserService;
+import 'package:thingsboard_app/utils/services/ble_scanning/ble_scanning_service.dart';
+import 'package:thingsboard_app/utils/services/ble_scanning/tb_client_ble_upload_session.dart';
 import 'package:thingsboard_app/utils/services/communication/communication_service.dart';
 import 'package:thingsboard_app/utils/services/communication/i_communication_service.dart';
 import 'package:thingsboard_app/utils/services/device_info/device_info_service.dart';
@@ -72,6 +75,16 @@ Future<void> setUpRootDependencies() async {
     )
     ..registerSingleton<IUserService>(UserService())
     ..registerLazySingleton<ILayoutService>(() => LayoutService(getIt()))
-    ..registerFactory(() => const UserDetailsUseCase());
+    ..registerFactory(() => const UserDetailsUseCase())
+    // BlueStar: one scanner for the whole app, so a scan survives leaving and
+    // reopening the scanner page.
+    ..registerLazySingleton(
+      () => BleScanningService(
+        session: TbClientBleUploadSession(getIt()),
+        uploadUrl: Uri.parse(BlueStarConstants.bleUploadUrl),
+        apiKey: BlueStarConstants.bleUploadApiKey,
+        userAgent: 'BluestarApp/${deviceInfoService.getBuildVersion()}',
+      ),
+    );
   await getIt.getAsync<ITbClientService>();
 }

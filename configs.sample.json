@@ -8,5 +8,6 @@
     "thingsboardAndroidAppSecret": "xxx",
     "iosApplicationId": "com.nauticsensors.bluestar",
     "iosApplicationName": "BlueStar",
-    "thingsboardIosAppSecret": "xxx"
+    "thingsboardIosAppSecret": "xxx",
+    "bleUploadApiKey": ""
 }

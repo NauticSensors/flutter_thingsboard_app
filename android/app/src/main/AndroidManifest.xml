@@ -28,6 +28,11 @@
         android:name="android.hardware.camera"
         android:required="false" />
 
+    <!-- BlueStar sensor scanner -->
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 

@@ -93,6 +93,10 @@ dependencies:
   barcode: ^2.2.9
   riverpod_annotation: ^2.6.1
   path_provider: ^2.1.5
+  # BlueStar sensor scanner. flutter_blue_plus is pinned to the version that
+  # shipped with BlueStar 1.7.4.
+  flutter_blue_plus: 1.35.5
+  http: ^1.5.0
 dev_dependencies:
   integration_test:
     sdk: flutter
