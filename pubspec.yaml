@@ -97,6 +97,9 @@ dependencies:
   # shipped with BlueStar 1.7.4.
   flutter_blue_plus: 1.35.5
   http: ^1.5.0
+  # BlueStar referral page
+  qr_flutter: ^4.1.0
+  share_plus: ^10.1.4
 dev_dependencies:
   integration_test:
     sdk: flutter
