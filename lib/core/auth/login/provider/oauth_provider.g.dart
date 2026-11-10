@@ -6,9 +6,12 @@ part of 'oauth_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$oauthHash() => r'06f8c9370dcd7fb9ff5b2b9e71b82c665da4f6a7';
+String _$oauthHash() => r'27ccf0c8f1ce2150bc90bd69df8c9d0c28cb54ad';
 
-/// See also [oauth].
+/// The OAuth2 clients the server offers this app. BlueStar signs in through
+/// OAuth2 only, so upstream's QR code pseudo-client is not added to the list.
+///
+/// Copied from [oauth].
 @ProviderFor(oauth)
 final oauthProvider = AutoDisposeFutureProvider<LoginMobileInfo>.internal(
   oauth,

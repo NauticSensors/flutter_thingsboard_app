@@ -7,11 +7,8 @@ import 'package:thingsboard_app/utils/services/tb_client_service/i_tb_client_ser
 
 part 'oauth_provider.g.dart';
 
-final qrCode = OAuth2ClientInfo.fromJson({
-  'name': "qr",
-  'icon': 'qr-code',
-  'url': '',
-});
+/// The OAuth2 clients the server offers this app. BlueStar signs in through
+/// OAuth2 only, so upstream's QR code pseudo-client is not added to the list.
 @riverpod
 Future<LoginMobileInfo> oauth(Ref ref) async {
   final tbClient = getIt<ITbClientService>().client;
@@ -25,15 +22,11 @@ Future<LoginMobileInfo> oauth(Ref ref) async {
     );
 
     if (loginInfo != null) {
-      return LoginMobileInfo(
-        oAuth2Clients: [...loginInfo.oAuth2Clients, qrCode],
-        storeInfo: loginInfo.storeInfo,
-        versionInfo: loginInfo.versionInfo,
-      );
+      return loginInfo;
     }
   } catch (_) {}
-  return LoginMobileInfo(
-    oAuth2Clients: [qrCode],
+  return const LoginMobileInfo(
+    oAuth2Clients: [],
     storeInfo: null,
     versionInfo: null,
   );

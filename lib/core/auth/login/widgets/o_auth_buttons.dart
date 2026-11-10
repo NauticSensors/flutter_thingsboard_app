@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:thingsboard_app/constants/assets_path.dart';
 import 'package:thingsboard_app/core/auth/login/widgets/o_auth_button.dart';
-import 'package:thingsboard_app/generated/l10n.dart';
 import 'package:thingsboard_app/modules/main/providers/navigation_helper.dart';
 import 'package:thingsboard_app/thingsboard_client.dart';
 
+/// Name of the NauticSensors OAuth2 client as configured on the server. Its
+/// button shows the BlueStar logo instead of the configured icon.
+const nauticSensorsIdClientName = 'NauticSensors ID';
+
+/// One full-width button per OAuth2 client, with the client's name.
 class OAuthButtons extends StatelessWidget {
   const OAuthButtons({
     super.key,
@@ -16,36 +20,28 @@ class OAuthButtons extends StatelessWidget {
   final List<OAuth2ClientInfo> clients;
   @override
   Widget build(BuildContext context) {
-    return clients.length == 1 && clients.first.name == 'qr'
-        ? Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              OAuthButton(
-                logo: SvgPicture.asset(
-                  ThingsboardImage.oauth2Logos['qr-code-logo']!,
+    return Column(
+      spacing: 10,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children:
+          clients
+              .map(
+                (e) => OAuthButton(
+                  logo: _getOauth2ButtonLogo(context, e),
+                  title: e.name,
+                  onTap: () => onButtonPressed(e),
                 ),
-                onTap: () => onButtonPressed(clients.first),
-                title: S.of(context).scanQrCode,
-              ),
-            ],
-          )
-        : Row(
-            spacing: 10,
-            children: clients
-                .map(
-                  (e) => Expanded(
-                    child: OAuthButton(
-                      logo: _getOauth2ButtonLogo(context, e),
-                      onTap: () => onButtonPressed(e),
-                    ),
-                  ),
-                )
-                .toList(),
-          );
+              )
+              .toList(),
+    );
   }
 }
 
 Widget _getOauth2ButtonLogo(BuildContext context, OAuth2ClientInfo info) {
+  if (info.name == nauticSensorsIdClientName) {
+    return SvgPicture.asset(ThingsboardImage.thingsboard, height: 32);
+  }
+
   final String? svgPath = ThingsboardImage.oauth2Logos[info.icon];
 
   if (svgPath != null) {
