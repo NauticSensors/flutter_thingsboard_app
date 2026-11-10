@@ -55,36 +55,22 @@ class _TbProgressIndicatorState extends State<TbProgressIndicator>
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        SvgPicture.asset(
-          ThingsboardImage.thingsboardCenter,
-          height: widget.size,
-          width: widget.size,
-          colorFilter: ColorFilter.mode(
-            widget._getValueColor(context),
-            BlendMode.srcIn,
-          ),
+    // BlueStar: the whole star rotates, instead of the ThingsBoard gear
+    // around a fixed centre.
+    return AnimatedBuilder(
+      animation: _rotation,
+      child: SvgPicture.asset(
+        ThingsboardImage.thingsboard,
+        height: widget.size,
+        width: widget.size,
+        colorFilter: ColorFilter.mode(
+          widget._getValueColor(context),
+          BlendMode.srcIn,
         ),
-        AnimatedBuilder(
-          animation: _rotation,
-          child: SvgPicture.asset(
-            ThingsboardImage.thingsboardOuter,
-            height: widget.size,
-            width: widget.size,
-            colorFilter: ColorFilter.mode(
-              widget._getValueColor(context),
-              BlendMode.srcIn,
-            ),
-          ),
-          builder: (BuildContext context, Widget? child) {
-            return Transform.rotate(
-              angle: _rotation.value * pi * 2,
-              child: child,
-            );
-          },
-        ),
-      ],
+      ),
+      builder: (BuildContext context, Widget? child) {
+        return Transform.rotate(angle: _rotation.value * pi * 2, child: child);
+      },
     );
   }
 }

@@ -48,11 +48,7 @@ class _DashboardGridCardState extends State<DashboardGridCard> {
             child: Stack(
               children: [
                 SizedBox.expand(
-                  child: FittedBox(
-                    clipBehavior: Clip.hardEdge,
-                    fit: BoxFit.cover,
-                    child: image,
-                  ),
+                  child: FittedBox(clipBehavior: Clip.hardEdge, child: image),
                 ),
               ],
             ),
