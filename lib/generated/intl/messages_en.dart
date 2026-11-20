@@ -406,6 +406,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "loginNotification": MessageLookupByLibrary.simpleMessage(
       "Login to your account",
     ),
+    "loginOrCreateAccount": MessageLookupByLibrary.simpleMessage(
+      "Sign in or create account",
+    ),
+    "loginWelcomeText": MessageLookupByLibrary.simpleMessage(
+      "Sign in or create an account. Use your email address, or continue with your Google or Microsoft account.",
+    ),
+    "loginWelcomeTitle": MessageLookupByLibrary.simpleMessage(
+      "Welcome to BlueStar",
+    ),
     "loginWith": MessageLookupByLibrary.simpleMessage("Login with"),
     "logoDefaultValue": MessageLookupByLibrary.simpleMessage("BlueStar Logo"),
     "logout": MessageLookupByLibrary.simpleMessage("Log Out"),

@@ -178,7 +178,8 @@ class _LoginPageState extends TbPageState<LoginPage>
                                     const SizedBox(height: 32),
                                     Align(
                                       child: Text(
-                                        S.of(context).loginNotification,
+                                        S.of(context).loginWelcomeTitle,
+                                        textAlign: TextAlign.center,
                                         style: TbTextStyles.titleLarge.copyWith(
                                           color: Colors.black.withValues(
                                             alpha: .87,
@@ -186,7 +187,19 @@ class _LoginPageState extends TbPageState<LoginPage>
                                         ),
                                       ),
                                     ),
-                                    const SizedBox(height: 48),
+                                    const SizedBox(height: 16),
+                                    // New customers did not see that the one
+                                    // button is also the way to register.
+                                    Text(
+                                      S.of(context).loginWelcomeText,
+                                      textAlign: TextAlign.center,
+                                      style: TbTextStyles.bodyLarge.copyWith(
+                                        color: Colors.black.withValues(
+                                          alpha: .87,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 32),
                                     if (state.oAuthClients.isNotEmpty)
                                       _buildOAuth2Buttons(state.oAuthClients),
                                     // Visibility(
@@ -506,17 +519,6 @@ class _LoginPageState extends TbPageState<LoginPage>
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Container(
-          padding: const EdgeInsets.symmetric(vertical: 16),
-          child: Center(
-            child: Text(
-              S.of(context).loginWith,
-              style: TbTextStyles.bodyMedium.copyWith(
-                color: Colors.black.withValues(alpha: .54),
-              ),
-            ),
-          ),
-        ),
         Row(
           children: [
             ...clients
@@ -589,13 +591,20 @@ class _LoginPageState extends TbPageState<LoginPage>
         const Padding(
           padding: EdgeInsets.only(right: 14),
         ),
-        const Text('NauticSensors ID')
+        // Flexible: the label wraps on narrow screens instead of overflowing.
+        Flexible(
+          child: Text(
+            S.of(context).loginOrCreateAccount,
+            textAlign: TextAlign.center,
+          ),
+        ),
       ];
     }
     final button = OutlinedButton(
       style: _oauth2IconButtonStyle,
       onPressed: () => _oauth2ButtonPressed(client),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: rowChildren,
       ),
     );

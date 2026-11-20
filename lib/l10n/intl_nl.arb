@@ -408,5 +408,8 @@
       }
     }
   },
-  "referralLoading": "Laden..."
+  "referralLoading": "Laden...",
+  "loginWelcomeTitle": "Welkom bij BlueStar",
+  "loginWelcomeText": "Log in of maak een account aan. Dat kan met uw e-mailadres, of direct met uw Google- of Microsoft-account.",
+  "loginOrCreateAccount": "Inloggen of account aanmaken"
 }
