@@ -15,6 +15,14 @@ fvm flutter build apk  # Build Android APK
 fvm flutter build ios  # Build iOS app
 ```
 
+Run en build hebben `--dart-define-from-file=configs.json` nodig (`configs.json` staat niet in git, zie `configs.sample.json`): bundle-id, callback-schema en app-secret komen eruit, en zonder weigert ThingsBoard de login. De app praat met productie.
+
+De BlueStar-versie die in de winkels staat komt van de branch `bluestar-1.7.0`, niet van `master`.
+
+## Inloggen en registreren
+
+De login loopt via ThingsBoard naar Keycloak; de pagina's daar komen uit het repo `keycloak-theme`. Hoe de flow loopt, hoe je hem in een simulator test en wat er nog openstaat: [docs/registratieflow.md](docs/registratieflow.md).
+
 ## Architecture
 
 - **Framework:** Flutter (Dart SDK ^3.7.0)
