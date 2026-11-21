@@ -13,7 +13,8 @@ import 'package:thingsboard_app/thingsboard_client.dart';
 import 'package:thingsboard_app/utils/ui/visibility_widget.dart';
 
 /// BlueStar signs in through OAuth2 only (NauticSensors ID): there is no
-/// email and password form and no QR code login.
+/// email and password form and no QR code login. The same button is the way
+/// to register, so the screen says so.
 class LoginWidget extends HookConsumerWidget {
   const LoginWidget({super.key});
 
@@ -33,14 +34,22 @@ class LoginWidget extends HookConsumerWidget {
               children: [
                 const LoginHeader(),
                 Text(
-                  S.of(context).loginToYourAccount,
+                  S.of(context).loginWelcomeTitle,
                   style: TbTextStyles.titleMedium,
+                  textAlign: TextAlign.center,
+                ),
+                // New customers did not see that the one button is also the
+                // way to register.
+                Text(
+                  S.of(context).loginWelcomeText,
+                  style: TbTextStyles.bodyLarge,
+                  textAlign: TextAlign.center,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 32),
+                  padding: const EdgeInsets.only(top: 16),
                   child:
                       clients.isNotEmpty
-                          ? _OAuthLogin(
+                          ? OAuthButtons(
                             clients: clients,
                             onButtonPressed:
                                 (client) => onOauth2ButtonPressed(
@@ -66,31 +75,6 @@ class LoginWidget extends HookConsumerWidget {
           show: loading.value || providers.isLoading,
           child: const FullScreenLoader(),
         ),
-      ],
-    );
-  }
-}
-
-class _OAuthLogin extends StatelessWidget {
-  const _OAuthLogin({required this.clients, required this.onButtonPressed});
-
-  final List<OAuth2ClientInfo> clients;
-  final void Function(OAuth2ClientInfo) onButtonPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      spacing: 12,
-      children: [
-        Text(
-          S.of(context).loginWith.toUpperCase(),
-          style: TbTextStyles.labelMedium.copyWith(
-            fontWeight: FontWeight.w400,
-            fontFamily: 'Roboto',
-            letterSpacing: 0.4,
-          ),
-        ),
-        OAuthButtons(onButtonPressed: onButtonPressed, clients: clients),
       ],
     );
   }

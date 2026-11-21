@@ -507,9 +507,18 @@ class MessageLookup extends MessageLookupByLibrary {
       "De lijst is momenteel leeg.",
     ),
     "login": MessageLookupByLibrary.simpleMessage("Inloggen"),
+    "loginOrCreateAccount": MessageLookupByLibrary.simpleMessage(
+      "Inloggen of account aanmaken",
+    ),
     "loginToApp": MessageLookupByLibrary.simpleMessage("Inloggen in de app"),
     "loginToYourAccount": MessageLookupByLibrary.simpleMessage(
       "Log in op uw account",
+    ),
+    "loginWelcomeText": MessageLookupByLibrary.simpleMessage(
+      "Log in of maak een account aan. Dat kan met uw e‑mailadres, of direct met uw Google- of Microsoft-account.",
+    ),
+    "loginWelcomeTitle": MessageLookupByLibrary.simpleMessage(
+      "Welkom bij BlueStar",
     ),
     "loginWith": MessageLookupByLibrary.simpleMessage("Inloggen met"),
     "logoDefaultValue": MessageLookupByLibrary.simpleMessage("BlueStar-logo"),

@@ -66,7 +66,7 @@ Android-releases worden ondertekend met de keystore uit `android/key.properties`
 
 | Onderdeel | Waar |
 |---|---|
-| Alleen-OAuth-login met de knop "NauticSensors ID" | `lib/core/auth/login/widgets/login_widget.dart`, `o_auth_buttons.dart` |
+| Alleen-OAuth-login met één knop "Inloggen of account aanmaken" (OAuth-client "NauticSensors ID") | `lib/core/auth/login/widgets/login_widget.dart`, `o_auth_buttons.dart` |
 | Cache van OAuth-clients | `lib/core/auth/login/provider/oauth_clients_cache.dart`, `oauth_provider.dart` |
 | Sensorscanner (`/ble-scanner`) | `lib/modules/ble/`, `lib/utils/services/ble_scanning/` |
 | Doorverwijzen (`/referral`) | `lib/modules/referral/`, zie `docs/referral-page.md` |

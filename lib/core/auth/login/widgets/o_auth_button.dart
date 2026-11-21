@@ -18,7 +18,8 @@ class OAuthButton extends StatelessWidget {
         children: [
           logo,
           if(title != null) 
-          Text(title!, style: TbTextStyles.bodyLarge.copyWith(color: AppColors.textPrimary, height: 1), )
+          // BlueStar: Flexible, so a long title wraps instead of overflowing.
+          Flexible(child: Text(title!, textAlign: TextAlign.center, style: TbTextStyles.bodyLarge.copyWith(color: AppColors.textPrimary, height: 1), ))
         ],
       ),
     );

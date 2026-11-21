@@ -526,5 +526,8 @@
       }
     }
   },
-  "referralLoading": "Loading..."
+  "referralLoading": "Loading...",
+  "loginWelcomeTitle": "Welcome to BlueStar",
+  "loginWelcomeText": "Sign in or create an account. Use your email address, or continue with your Google or Microsoft account.",
+  "loginOrCreateAccount": "Sign in or create account"
 }

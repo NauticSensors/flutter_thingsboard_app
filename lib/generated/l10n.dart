@@ -3598,6 +3598,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Welcome to BlueStar`
+  String get loginWelcomeTitle {
+    return Intl.message(
+      'Welcome to BlueStar',
+      name: 'loginWelcomeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign in or create an account. Use your email address, or continue with your Google or Microsoft account.`
+  String get loginWelcomeText {
+    return Intl.message(
+      'Sign in or create an account. Use your email address, or continue with your Google or Microsoft account.',
+      name: 'loginWelcomeText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign in or create account`
+  String get loginOrCreateAccount {
+    return Intl.message(
+      'Sign in or create account',
+      name: 'loginOrCreateAccount',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

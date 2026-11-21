@@ -496,9 +496,18 @@ class MessageLookup extends MessageLookupByLibrary {
       "The list is currently empty.",
     ),
     "login": MessageLookupByLibrary.simpleMessage("Log In"),
+    "loginOrCreateAccount": MessageLookupByLibrary.simpleMessage(
+      "Sign in or create account",
+    ),
     "loginToApp": MessageLookupByLibrary.simpleMessage("Login to app"),
     "loginToYourAccount": MessageLookupByLibrary.simpleMessage(
       "Login to your account",
+    ),
+    "loginWelcomeText": MessageLookupByLibrary.simpleMessage(
+      "Sign in or create an account. Use your email address, or continue with your Google or Microsoft account.",
+    ),
+    "loginWelcomeTitle": MessageLookupByLibrary.simpleMessage(
+      "Welcome to BlueStar",
     ),
     "loginWith": MessageLookupByLibrary.simpleMessage("Login with"),
     "logoDefaultValue": MessageLookupByLibrary.simpleMessage("BlueStar Logo"),
