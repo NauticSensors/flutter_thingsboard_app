@@ -93,7 +93,15 @@ class Login extends _$Login {
       (l) => l.toString() == langStr || l.languageCode == langStr,
     );
 
-    await S.load(locale ?? const Locale('en'));
+    // BlueStar: without a language in the profile, follow the phone as the
+    // login screen does. Upstream switches to English here.
+    await S.load(
+      locale ??
+          basicLocaleListResolution(
+            WidgetsBinding.instance.platformDispatcher.locales,
+            S.delegate.supportedLocales,
+          ),
+    );
 
     state = state.copyWith(
       isUserLoaded: true,
